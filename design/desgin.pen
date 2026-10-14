@@ -37,7 +37,7 @@
               "id": "G7KzF",
               "name": "Label",
               "fill": "$text-primary",
-              "content": "0–3 años",
+              "content": "0–3 years",
               "fontFamily": "$font-body",
               "fontSize": 13,
               "fontWeight": "600"
@@ -74,7 +74,7 @@
               "id": "gzlwk",
               "name": "Label",
               "fill": "$text-inverse",
-              "content": "Analizar vídeo",
+              "content": "Analyze video",
               "fontFamily": "$font-body",
               "fontSize": 15,
               "fontWeight": "600"
@@ -110,7 +110,7 @@
               "id": "nA7KI",
               "name": "Label",
               "fill": "$accent",
-              "content": "METODOLOGÍA",
+              "content": "METHODOLOGY",
               "fontFamily": "$font-body",
               "fontSize": 12,
               "fontWeight": "600",
@@ -125,7 +125,7 @@
       "id": "UpqkR",
       "x": 0,
       "y": 166,
-      "name": "EdadPlay — Inicio",
+      "name": "Kiddometer — Home",
       "clip": true,
       "width": 1440,
       "fill": "$background",
@@ -178,7 +178,7 @@
                   "id": "ZFw2x",
                   "name": "Wordmark",
                   "fill": "$text-primary",
-                  "content": "EdadPlay",
+                  "content": "Kiddometer",
                   "fontFamily": "$font-heading",
                   "fontSize": 22,
                   "fontWeight": "700"
@@ -195,9 +195,9 @@
                 {
                   "type": "text",
                   "id": "xy5gf",
-                  "name": "Cómo funciona",
+                  "name": "How it works",
                   "fill": "$text-secondary",
-                  "content": "Cómo funciona",
+                  "content": "How it works",
                   "fontFamily": "$font-body",
                   "fontSize": 14,
                   "fontWeight": "500"
@@ -205,9 +205,9 @@
                 {
                   "type": "text",
                   "id": "z0kesL",
-                  "name": "Metodología",
+                  "name": "Methodology",
                   "fill": "$text-secondary",
-                  "content": "Metodología",
+                  "content": "Methodology",
                   "fontFamily": "$font-body",
                   "fontSize": 14,
                   "fontWeight": "500"
@@ -215,9 +215,9 @@
                 {
                   "type": "text",
                   "id": "Y0r4v9",
-                  "name": "Referencias",
+                  "name": "References",
                   "fill": "$text-secondary",
-                  "content": "Referencias",
+                  "content": "References",
                   "fontFamily": "$font-body",
                   "fontSize": 14,
                   "fontWeight": "500"
@@ -305,7 +305,7 @@
                   "icon": "sparkles"
                 },
                 "nA7KI": {
-                  "content": "ANÁLISIS CON BASE CIENTÍFICA"
+                  "content": "SCIENCE-BASED ANALYSIS"
                 }
               }
             },
@@ -316,7 +316,7 @@
               "fill": "$text-primary",
               "textGrowth": "fixed-width",
               "width": 880,
-              "content": "¿Para qué edad es este vídeo?",
+              "content": "What age is this video for?",
               "lineHeight": 1.08,
               "textAlign": "center",
               "fontFamily": "$font-heading",
@@ -330,7 +330,7 @@
               "fill": "$text-secondary",
               "textGrowth": "fixed-width",
               "width": 640,
-              "content": "Analiza cualquier vídeo en tu navegador y obtén una recomendación de edad clara, con gráficas y explicaciones que entiende todo el mundo.",
+              "content": "Analyze any video in your browser and get a clear age recommendation, with charts and explanations anyone can understand.",
               "lineHeight": 1.55,
               "textAlign": "center",
               "fontFamily": "$font-body",
@@ -360,7 +360,7 @@
                     {
                       "type": "frame",
                       "id": "fitqU",
-                      "name": "Tab Archivo local",
+                      "name": "Tab Local file",
                       "fill": "$background",
                       "cornerRadius": "$radius-full",
                       "effect": {
@@ -395,7 +395,7 @@
                           "id": "LcydU",
                           "name": "Tab Label",
                           "fill": "$text-primary",
-                          "content": "Archivo local",
+                          "content": "Local file",
                           "fontFamily": "$font-body",
                           "fontSize": 14,
                           "fontWeight": "600"
@@ -429,7 +429,7 @@
                           "id": "Fkm5e",
                           "name": "Tab Label",
                           "fill": "$text-secondary",
-                          "content": "Pegar URL",
+                          "content": "Paste URL",
                           "fontFamily": "$font-body",
                           "fontSize": 14,
                           "fontWeight": "600"
@@ -525,7 +525,7 @@
                       "id": "wadU4",
                       "name": "Drop Title",
                       "fill": "$text-primary",
-                      "content": "Arrastra un vídeo aquí o haz clic para seleccionar",
+                      "content": "Drag a video here or click to select",
                       "fontFamily": "$font-heading",
                       "fontSize": 20,
                       "fontWeight": "600"
@@ -535,7 +535,7 @@
                       "id": "Ygpt7",
                       "name": "Drop Caption",
                       "fill": "$text-muted",
-                      "content": "MP4, WebM o MOV · el análisis tarda aproximadamente ¼ de la duración del vídeo",
+                      "content": "MP4, WebM or MOV · analysis takes roughly ¼ of the video duration",
                       "fontFamily": "$font-body",
                       "fontSize": 14,
                       "fontWeight": "normal"
@@ -569,7 +569,7 @@
                             {
                               "type": "frame",
                               "id": "NQqqq",
-                              "name": "Mode Básico",
+                              "name": "Mode Basic",
                               "fill": "$background",
                               "cornerRadius": "$radius-full",
                               "effect": {
@@ -604,7 +604,7 @@
                                   "id": "DqDdG",
                                   "name": "Basic Label",
                                   "fill": "$text-primary",
-                                  "content": "Modo básico",
+                                  "content": "Basic mode",
                                   "fontFamily": "$font-body",
                                   "fontSize": 13,
                                   "fontWeight": "600"
@@ -614,7 +614,7 @@
                             {
                               "type": "frame",
                               "id": "cHaGW",
-                              "name": "Mode Experto",
+                              "name": "Mode Expert",
                               "cornerRadius": "$radius-full",
                               "gap": 6,
                               "padding": [
@@ -638,7 +638,7 @@
                                   "id": "poFXa",
                                   "name": "Expert Label",
                                   "fill": "$text-secondary",
-                                  "content": "Modo experto",
+                                  "content": "Expert mode",
                                   "fontFamily": "$font-body",
                                   "fontSize": 13,
                                   "fontWeight": "600"
@@ -652,7 +652,7 @@
                           "id": "ErqKl",
                           "name": "Mode Hint",
                           "fill": "$text-muted",
-                          "content": "Básico: veredicto sencillo · Experto: todas las gráficas y métricas",
+                          "content": "Basic: simple verdict · Expert: all charts and metrics",
                           "fontFamily": "$font-body",
                           "fontSize": 12,
                           "fontWeight": "normal"
@@ -674,7 +674,7 @@
               "id": "Ydqtq",
               "name": "Hero Note",
               "fill": "$text-muted",
-              "content": "¿El vídeo está en YouTube u otra web? Pega el enlace: se descarga y analiza solo en tu dispositivo.",
+              "content": "Is the video on YouTube or another site? Paste the link: it is downloaded and analyzed only on your device.",
               "fontFamily": "$font-body",
               "fontSize": 13,
               "fontWeight": "normal"
@@ -683,7 +683,7 @@
               "id": "XUWy9",
               "type": "ref",
               "ref": "VGlIa",
-              "name": "Deco 0–3 años",
+              "name": "Deco 0–3 years",
               "layoutPosition": "absolute",
               "x": 96,
               "y": 300,
@@ -704,7 +704,7 @@
                   "fill": "$age-0-3"
                 },
                 "G7KzF": {
-                  "content": "0–3 años"
+                  "content": "0–3 years"
                 }
               }
             },
@@ -712,7 +712,7 @@
               "id": "g7hZY",
               "type": "ref",
               "ref": "VGlIa",
-              "name": "Deco 4–6 años",
+              "name": "Deco 4–6 years",
               "layoutPosition": "absolute",
               "x": 150,
               "y": 470,
@@ -733,7 +733,7 @@
                   "fill": "$age-4-6"
                 },
                 "G7KzF": {
-                  "content": "4–6 años"
+                  "content": "4–6 years"
                 }
               }
             },
@@ -741,7 +741,7 @@
               "id": "a45F7I",
               "type": "ref",
               "ref": "VGlIa",
-              "name": "Deco 7–12 años",
+              "name": "Deco 7–12 years",
               "layoutPosition": "absolute",
               "x": 1220,
               "y": 320,
@@ -762,7 +762,7 @@
                   "fill": "$age-7-12"
                 },
                 "G7KzF": {
-                  "content": "7–12 años"
+                  "content": "7–12 years"
                 }
               }
             },
@@ -770,7 +770,7 @@
               "id": "x8x0Q",
               "type": "ref",
               "ref": "VGlIa",
-              "name": "Deco 13+ años",
+              "name": "Deco 13+ years",
               "layoutPosition": "absolute",
               "x": 1180,
               "y": 500,
@@ -791,7 +791,7 @@
                   "fill": "$age-13"
                 },
                 "G7KzF": {
-                  "content": "13+ años"
+                  "content": "13+ years"
                 }
               }
             }
@@ -800,7 +800,7 @@
         {
           "type": "frame",
           "id": "Jk0TS",
-          "name": "Cómo funciona",
+          "name": "How it works",
           "width": "fill_container",
           "layout": "vertical",
           "gap": 32,
@@ -828,7 +828,7 @@
                       "icon": "route"
                     },
                     "nA7KI": {
-                      "content": "CÓMO FUNCIONA"
+                      "content": "HOW IT WORKS"
                     }
                   }
                 },
@@ -837,7 +837,7 @@
                   "id": "TdOzz",
                   "name": "How Title",
                   "fill": "$text-primary",
-                  "content": "Tres pasos, cero complicaciones",
+                  "content": "Three steps, zero hassle",
                   "fontFamily": "$font-heading",
                   "fontSize": 36,
                   "fontWeight": "700"
@@ -920,7 +920,7 @@
                       "id": "m75UE",
                       "name": "Step Title",
                       "fill": "$text-primary",
-                      "content": "Elige el vídeo",
+                      "content": "Choose the video",
                       "fontFamily": "$font-heading",
                       "fontSize": 20,
                       "fontWeight": "600"
@@ -932,7 +932,7 @@
                       "fill": "$text-secondary",
                       "textGrowth": "fixed-width",
                       "width": "fill_container",
-                      "content": "Un archivo de tu dispositivo, una URL o un enlace de YouTube. Nada sale de tu navegador.",
+                      "content": "A file from your device, a URL or a YouTube link. Nothing leaves your browser.",
                       "lineHeight": 1.55,
                       "fontFamily": "$font-body",
                       "fontSize": 14,
@@ -1009,7 +1009,7 @@
                       "id": "OC9gi",
                       "name": "Step Title",
                       "fill": "$text-primary",
-                      "content": "Análisis en tu navegador",
+                      "content": "Analysis in your browser",
                       "fontFamily": "$font-heading",
                       "fontSize": 20,
                       "fontWeight": "600"
@@ -1021,7 +1021,7 @@
                       "fill": "$text-secondary",
                       "textGrowth": "fixed-width",
                       "width": "fill_container",
-                      "content": "Medimos cortes, destellos, volumen, sonido, movimiento y complejidad visual, minuto a minuto.",
+                      "content": "We measure cuts, flashes, volume, sound, motion and visual complexity, minute by minute.",
                       "lineHeight": 1.55,
                       "fontFamily": "$font-body",
                       "fontSize": 14,
@@ -1098,7 +1098,7 @@
                       "id": "hdeDv",
                       "name": "Step Title",
                       "fill": "$text-primary",
-                      "content": "Recomendación de edad",
+                      "content": "Age recommendation",
                       "fontFamily": "$font-heading",
                       "fontSize": 20,
                       "fontWeight": "600"
@@ -1110,7 +1110,7 @@
                       "fill": "$text-secondary",
                       "textGrowth": "fixed-width",
                       "width": "fill_container",
-                      "content": "Recibes una edad recomendada con gráficas, momentos intensos y explicaciones en lenguaje claro.",
+                      "content": "You get a recommended age with charts, intense moments and clear explanations.",
                       "lineHeight": 1.55,
                       "fontFamily": "$font-body",
                       "fontSize": 14,
@@ -1125,7 +1125,7 @@
         {
           "type": "frame",
           "id": "GkVMV",
-          "name": "Recomendaciones por edad",
+          "name": "Recommendations by age",
           "width": "fill_container",
           "layout": "vertical",
           "gap": 32,
@@ -1153,7 +1153,7 @@
                       "icon": "users"
                     },
                     "nA7KI": {
-                      "content": "GUÍA POR EDADES"
+                      "content": "AGE GUIDE"
                     }
                   }
                 },
@@ -1162,7 +1162,7 @@
                   "id": "fSAEy",
                   "name": "Ages Title",
                   "fill": "$text-primary",
-                  "content": "¿Qué tolera bien cada edad?",
+                  "content": "What does each age handle well?",
                   "fontFamily": "$font-heading",
                   "fontSize": 36,
                   "fontWeight": "700"
@@ -1174,7 +1174,7 @@
                   "fill": "$text-secondary",
                   "textGrowth": "fixed-width",
                   "width": 620,
-                  "content": "Límites orientativos por minuto de vídeo. Si una métrica supera el umbral de una edad, EdadPlay recomienda la siguiente franja.",
+                  "content": "Indicative limits per minute of video. If a metric exceeds an age threshold, Kiddometer recommends the next band.",
                   "lineHeight": 1.55,
                   "textAlign": "center",
                   "fontFamily": "$font-body",
@@ -1193,7 +1193,7 @@
                 {
                   "type": "frame",
                   "id": "RDQAY",
-                  "name": "Age Card 0–3 años",
+                  "name": "Age Card 0–3 years",
                   "width": "fill_container",
                   "fill": "$surface",
                   "cornerRadius": "$radius-tile",
@@ -1205,14 +1205,14 @@
                       "id": "jFYWO",
                       "type": "ref",
                       "ref": "VGlIa",
-                      "name": "Pill 0–3 años",
+                      "name": "Pill 0–3 years",
                       "fill": "$age-0-3-soft",
                       "descendants": {
                         "pwkb7": {
                           "fill": "$age-0-3"
                         },
                         "G7KzF": {
-                          "content": "0–3 años"
+                          "content": "0–3 years"
                         }
                       }
                     },
@@ -1228,7 +1228,7 @@
                           "id": "v51DN",
                           "name": "Big Value",
                           "fill": "$text-primary",
-                          "content": "Evitar",
+                          "content": "Avoid",
                           "fontFamily": "$font-data",
                           "fontSize": 30,
                           "fontWeight": "600"
@@ -1238,7 +1238,7 @@
                           "id": "vSeeI",
                           "name": "Big Caption",
                           "fill": "$text-muted",
-                          "content": "Mejor sin pantallas",
+                          "content": "Better with no screens",
                           "fontFamily": "$font-body",
                           "fontSize": 12,
                           "fontWeight": "normal"
@@ -1256,7 +1256,7 @@
                         {
                           "type": "frame",
                           "id": "YgCs0",
-                          "name": "Row Cortes / min",
+                          "name": "Row Cuts / min",
                           "width": "fill_container",
                           "justifyContent": "space_between",
                           "alignItems": "center",
@@ -1266,7 +1266,7 @@
                               "id": "YbETv",
                               "name": "Row Label",
                               "fill": "$text-secondary",
-                              "content": "Cortes / min",
+                              "content": "Cuts / min",
                               "fontFamily": "$font-body",
                               "fontSize": 13,
                               "fontWeight": "normal"
@@ -1286,7 +1286,7 @@
                         {
                           "type": "frame",
                           "id": "i8idqD",
-                          "name": "Row Destellos / s",
+                          "name": "Row Flashes / s",
                           "width": "fill_container",
                           "justifyContent": "space_between",
                           "alignItems": "center",
@@ -1296,7 +1296,7 @@
                               "id": "rMt8X",
                               "name": "Row Label",
                               "fill": "$text-secondary",
-                              "content": "Destellos / s",
+                              "content": "Flashes / s",
                               "fontFamily": "$font-body",
                               "fontSize": 13,
                               "fontWeight": "normal"
@@ -1306,7 +1306,7 @@
                               "id": "UPKaJ",
                               "name": "Row Value",
                               "fill": "$text-primary",
-                              "content": "≤ 0,5",
+                              "content": "≤ 0.5",
                               "fontFamily": "$font-data",
                               "fontSize": 13,
                               "fontWeight": "600"
@@ -1316,7 +1316,7 @@
                         {
                           "type": "frame",
                           "id": "R7UMTG",
-                          "name": "Row Picos de volumen",
+                          "name": "Row Volume peaks",
                           "width": "fill_container",
                           "justifyContent": "space_between",
                           "alignItems": "center",
@@ -1326,7 +1326,7 @@
                               "id": "xwVGX",
                               "name": "Row Label",
                               "fill": "$text-secondary",
-                              "content": "Picos de volumen",
+                              "content": "Volume peaks",
                               "fontFamily": "$font-body",
                               "fontSize": 13,
                               "fontWeight": "normal"
@@ -1346,7 +1346,7 @@
                         {
                           "type": "frame",
                           "id": "SP3h5",
-                          "name": "Row Eventos sonoros / min",
+                          "name": "Row Sound events / min",
                           "width": "fill_container",
                           "justifyContent": "space_between",
                           "alignItems": "center",
@@ -1356,7 +1356,7 @@
                               "id": "s8Wek",
                               "name": "Row Label",
                               "fill": "$text-secondary",
-                              "content": "Eventos sonoros / min",
+                              "content": "Sound events / min",
                               "fontFamily": "$font-body",
                               "fontSize": 13,
                               "fontWeight": "normal"
@@ -1380,7 +1380,7 @@
                 {
                   "type": "frame",
                   "id": "C5FWsS",
-                  "name": "Age Card 4–6 años",
+                  "name": "Age Card 4–6 years",
                   "width": "fill_container",
                   "fill": "$surface",
                   "cornerRadius": "$radius-tile",
@@ -1392,14 +1392,14 @@
                       "id": "BIU7g",
                       "type": "ref",
                       "ref": "VGlIa",
-                      "name": "Pill 4–6 años",
+                      "name": "Pill 4–6 years",
                       "fill": "$age-4-6-soft",
                       "descendants": {
                         "pwkb7": {
                           "fill": "$age-4-6"
                         },
                         "G7KzF": {
-                          "content": "4–6 años"
+                          "content": "4–6 years"
                         }
                       }
                     },
@@ -1425,7 +1425,7 @@
                           "id": "CT4kA",
                           "name": "Big Caption",
                           "fill": "$text-muted",
-                          "content": "Supervisada por un adulto",
+                          "content": "Supervised by an adult",
                           "fontFamily": "$font-body",
                           "fontSize": 12,
                           "fontWeight": "normal"
@@ -1443,7 +1443,7 @@
                         {
                           "type": "frame",
                           "id": "l92b3",
-                          "name": "Row Cortes / min",
+                          "name": "Row Cuts / min",
                           "width": "fill_container",
                           "justifyContent": "space_between",
                           "alignItems": "center",
@@ -1453,7 +1453,7 @@
                               "id": "Bqq5D",
                               "name": "Row Label",
                               "fill": "$text-secondary",
-                              "content": "Cortes / min",
+                              "content": "Cuts / min",
                               "fontFamily": "$font-body",
                               "fontSize": 13,
                               "fontWeight": "normal"
@@ -1473,7 +1473,7 @@
                         {
                           "type": "frame",
                           "id": "DfMQx",
-                          "name": "Row Destellos / s",
+                          "name": "Row Flashes / s",
                           "width": "fill_container",
                           "justifyContent": "space_between",
                           "alignItems": "center",
@@ -1483,7 +1483,7 @@
                               "id": "djxdQ",
                               "name": "Row Label",
                               "fill": "$text-secondary",
-                              "content": "Destellos / s",
+                              "content": "Flashes / s",
                               "fontFamily": "$font-body",
                               "fontSize": 13,
                               "fontWeight": "normal"
@@ -1493,7 +1493,7 @@
                               "id": "ouCeD",
                               "name": "Row Value",
                               "fill": "$text-primary",
-                              "content": "≤ 1,5",
+                              "content": "≤ 1.5",
                               "fontFamily": "$font-data",
                               "fontSize": 13,
                               "fontWeight": "600"
@@ -1503,7 +1503,7 @@
                         {
                           "type": "frame",
                           "id": "BjCON",
-                          "name": "Row Picos de volumen",
+                          "name": "Row Volume peaks",
                           "width": "fill_container",
                           "justifyContent": "space_between",
                           "alignItems": "center",
@@ -1513,7 +1513,7 @@
                               "id": "s1DNJk",
                               "name": "Row Label",
                               "fill": "$text-secondary",
-                              "content": "Picos de volumen",
+                              "content": "Volume peaks",
                               "fontFamily": "$font-body",
                               "fontSize": 13,
                               "fontWeight": "normal"
@@ -1533,7 +1533,7 @@
                         {
                           "type": "frame",
                           "id": "f8x6W",
-                          "name": "Row Eventos sonoros / min",
+                          "name": "Row Sound events / min",
                           "width": "fill_container",
                           "justifyContent": "space_between",
                           "alignItems": "center",
@@ -1543,7 +1543,7 @@
                               "id": "dBlUg",
                               "name": "Row Label",
                               "fill": "$text-secondary",
-                              "content": "Eventos sonoros / min",
+                              "content": "Sound events / min",
                               "fontFamily": "$font-body",
                               "fontSize": 13,
                               "fontWeight": "normal"
@@ -1567,7 +1567,7 @@
                 {
                   "type": "frame",
                   "id": "r89Ypd",
-                  "name": "Age Card 7–12 años",
+                  "name": "Age Card 7–12 years",
                   "width": "fill_container",
                   "fill": "$surface",
                   "cornerRadius": "$radius-tile",
@@ -1579,14 +1579,14 @@
                       "id": "G4BTi",
                       "type": "ref",
                       "ref": "VGlIa",
-                      "name": "Pill 7–12 años",
+                      "name": "Pill 7–12 years",
                       "fill": "$age-7-12-soft",
                       "descendants": {
                         "pwkb7": {
                           "fill": "$age-7-12"
                         },
                         "G7KzF": {
-                          "content": "7–12 años"
+                          "content": "7–12 years"
                         }
                       }
                     },
@@ -1612,7 +1612,7 @@
                           "id": "nlKb9",
                           "name": "Big Caption",
                           "fill": "$text-muted",
-                          "content": "Con pausas y acompañamiento",
+                          "content": "With breaks and company",
                           "fontFamily": "$font-body",
                           "fontSize": 12,
                           "fontWeight": "normal"
@@ -1630,7 +1630,7 @@
                         {
                           "type": "frame",
                           "id": "TPzlD",
-                          "name": "Row Cortes / min",
+                          "name": "Row Cuts / min",
                           "width": "fill_container",
                           "justifyContent": "space_between",
                           "alignItems": "center",
@@ -1640,7 +1640,7 @@
                               "id": "jpHpG",
                               "name": "Row Label",
                               "fill": "$text-secondary",
-                              "content": "Cortes / min",
+                              "content": "Cuts / min",
                               "fontFamily": "$font-body",
                               "fontSize": 13,
                               "fontWeight": "normal"
@@ -1660,7 +1660,7 @@
                         {
                           "type": "frame",
                           "id": "Q1DOk",
-                          "name": "Row Destellos / s",
+                          "name": "Row Flashes / s",
                           "width": "fill_container",
                           "justifyContent": "space_between",
                           "alignItems": "center",
@@ -1670,7 +1670,7 @@
                               "id": "Kb23t",
                               "name": "Row Label",
                               "fill": "$text-secondary",
-                              "content": "Destellos / s",
+                              "content": "Flashes / s",
                               "fontFamily": "$font-body",
                               "fontSize": 13,
                               "fontWeight": "normal"
@@ -1690,7 +1690,7 @@
                         {
                           "type": "frame",
                           "id": "NQFwI",
-                          "name": "Row Picos de volumen",
+                          "name": "Row Volume peaks",
                           "width": "fill_container",
                           "justifyContent": "space_between",
                           "alignItems": "center",
@@ -1700,7 +1700,7 @@
                               "id": "C6CbpI",
                               "name": "Row Label",
                               "fill": "$text-secondary",
-                              "content": "Picos de volumen",
+                              "content": "Volume peaks",
                               "fontFamily": "$font-body",
                               "fontSize": 13,
                               "fontWeight": "normal"
@@ -1720,7 +1720,7 @@
                         {
                           "type": "frame",
                           "id": "OTc9R",
-                          "name": "Row Eventos sonoros / min",
+                          "name": "Row Sound events / min",
                           "width": "fill_container",
                           "justifyContent": "space_between",
                           "alignItems": "center",
@@ -1730,7 +1730,7 @@
                               "id": "oKPWj",
                               "name": "Row Label",
                               "fill": "$text-secondary",
-                              "content": "Eventos sonoros / min",
+                              "content": "Sound events / min",
                               "fontFamily": "$font-body",
                               "fontSize": 13,
                               "fontWeight": "normal"
@@ -1754,7 +1754,7 @@
                 {
                   "type": "frame",
                   "id": "IhidC",
-                  "name": "Age Card 13+ años",
+                  "name": "Age Card 13+ years",
                   "width": "fill_container",
                   "fill": "$surface",
                   "cornerRadius": "$radius-tile",
@@ -1766,14 +1766,14 @@
                       "id": "ChgG8",
                       "type": "ref",
                       "ref": "VGlIa",
-                      "name": "Pill 13+ años",
+                      "name": "Pill 13+ years",
                       "fill": "$age-13-soft",
                       "descendants": {
                         "pwkb7": {
                           "fill": "$age-13"
                         },
                         "G7KzF": {
-                          "content": "13+ años"
+                          "content": "13+ years"
                         }
                       }
                     },
@@ -1789,7 +1789,7 @@
                           "id": "EOKNe",
                           "name": "Big Value",
                           "fill": "$text-primary",
-                          "content": "Equilibrado",
+                          "content": "Balanced",
                           "fontFamily": "$font-data",
                           "fontSize": 30,
                           "fontWeight": "600"
@@ -1799,7 +1799,7 @@
                           "id": "wlCB7",
                           "name": "Big Caption",
                           "fill": "$text-muted",
-                          "content": "Autonomía con criterio",
+                          "content": "Autonomy with judgement",
                           "fontFamily": "$font-body",
                           "fontSize": 12,
                           "fontWeight": "normal"
@@ -1817,7 +1817,7 @@
                         {
                           "type": "frame",
                           "id": "UlEdW",
-                          "name": "Row Cortes / min",
+                          "name": "Row Cuts / min",
                           "width": "fill_container",
                           "justifyContent": "space_between",
                           "alignItems": "center",
@@ -1827,7 +1827,7 @@
                               "id": "ZYNgM",
                               "name": "Row Label",
                               "fill": "$text-secondary",
-                              "content": "Cortes / min",
+                              "content": "Cuts / min",
                               "fontFamily": "$font-body",
                               "fontSize": 13,
                               "fontWeight": "normal"
@@ -1847,7 +1847,7 @@
                         {
                           "type": "frame",
                           "id": "sniJT",
-                          "name": "Row Destellos / s",
+                          "name": "Row Flashes / s",
                           "width": "fill_container",
                           "justifyContent": "space_between",
                           "alignItems": "center",
@@ -1857,7 +1857,7 @@
                               "id": "NCu0E",
                               "name": "Row Label",
                               "fill": "$text-secondary",
-                              "content": "Destellos / s",
+                              "content": "Flashes / s",
                               "fontFamily": "$font-body",
                               "fontSize": 13,
                               "fontWeight": "normal"
@@ -1867,7 +1867,7 @@
                               "id": "SPCLs",
                               "name": "Row Value",
                               "fill": "$text-primary",
-                              "content": "> 3 · aviso",
+                              "content": "> 3 · warning",
                               "fontFamily": "$font-data",
                               "fontSize": 13,
                               "fontWeight": "600"
@@ -1877,7 +1877,7 @@
                         {
                           "type": "frame",
                           "id": "brUPU",
-                          "name": "Row Picos de volumen",
+                          "name": "Row Volume peaks",
                           "width": "fill_container",
                           "justifyContent": "space_between",
                           "alignItems": "center",
@@ -1887,7 +1887,7 @@
                               "id": "d7J0R",
                               "name": "Row Label",
                               "fill": "$text-secondary",
-                              "content": "Picos de volumen",
+                              "content": "Volume peaks",
                               "fontFamily": "$font-body",
                               "fontSize": 13,
                               "fontWeight": "normal"
@@ -1907,7 +1907,7 @@
                         {
                           "type": "frame",
                           "id": "vSVjI",
-                          "name": "Row Eventos sonoros / min",
+                          "name": "Row Sound events / min",
                           "width": "fill_container",
                           "justifyContent": "space_between",
                           "alignItems": "center",
@@ -1917,7 +1917,7 @@
                               "id": "PFZfS",
                               "name": "Row Label",
                               "fill": "$text-secondary",
-                              "content": "Eventos sonoros / min",
+                              "content": "Sound events / min",
                               "fontFamily": "$font-body",
                               "fontSize": 13,
                               "fontWeight": "normal"
@@ -1971,7 +1971,7 @@
                   "fill": "$text-primary",
                   "textGrowth": "fixed-width",
                   "width": "fill_container",
-                  "content": "La OMS y la AAP recomiendan evitar pantallas antes de los 18–24 meses y limitarlas a 1 hora de contenido pausado y supervisado entre los 2 y 5 años. Mantén además la escucha por debajo de 75 dB (escucha segura infantil).",
+                  "content": "The WHO and the AAP recommend avoiding screens before 18–24 months and limiting them to 1 hour of slow, supervised content between ages 2 and 5. Also keep listening below 75 dB (safe listening for children).",
                   "lineHeight": 1.6,
                   "fontFamily": "$font-body",
                   "fontSize": 13,
@@ -1984,7 +1984,7 @@
         {
           "type": "frame",
           "id": "b825E4",
-          "name": "Metodología",
+          "name": "Methodology",
           "width": "fill_container",
           "layout": "vertical",
           "gap": 32,
@@ -2013,7 +2013,7 @@
                   "id": "ntqI5",
                   "name": "Meth Title",
                   "fill": "$text-primary",
-                  "content": "Qué medimos y por qué importa",
+                  "content": "What we measure and why it matters",
                   "fontFamily": "$font-heading",
                   "fontSize": 36,
                   "fontWeight": "700"
@@ -2025,7 +2025,7 @@
                   "fill": "$text-secondary",
                   "textGrowth": "fixed-width",
                   "width": 620,
-                  "content": "Seis métricas con base científica, explicadas para que las entienda cualquiera.",
+                  "content": "Six science-based metrics, explained so anyone can understand them.",
                   "lineHeight": 1.55,
                   "textAlign": "center",
                   "fontFamily": "$font-body",
@@ -2052,7 +2052,7 @@
                     {
                       "type": "frame",
                       "id": "h5xx8I",
-                      "name": "Meth Cortes visuales",
+                      "name": "Meth Visual cuts",
                       "width": "fill_container",
                       "fill": "$surface",
                       "cornerRadius": "$radius-tile",
@@ -2105,7 +2105,7 @@
                               "id": "ohyw3",
                               "name": "Meth Tile Title",
                               "fill": "$text-primary",
-                              "content": "Cortes visuales",
+                              "content": "Visual cuts",
                               "fontFamily": "$font-heading",
                               "fontSize": 18,
                               "fontWeight": "600"
@@ -2119,7 +2119,7 @@
                           "fill": "$text-primary",
                           "textGrowth": "fixed-width",
                           "width": "fill_container",
-                          "content": "Cuántas veces cambia el plano por minuto. Un ritmo demasiado rápido agota la atención de los más pequeños.",
+                          "content": "How many times the shot changes per minute. A pace that is too fast exhausts the attention of the youngest children.",
                           "lineHeight": 1.55,
                           "fontFamily": "$font-body",
                           "fontSize": 14,
@@ -2144,7 +2144,7 @@
                               "id": "NKKrl",
                               "name": "Base Label",
                               "fill": "$text-muted",
-                              "content": "BASE CIENTÍFICA",
+                              "content": "SCIENTIFIC BASIS",
                               "fontFamily": "$font-body",
                               "fontSize": 10,
                               "fontWeight": "700",
@@ -2157,7 +2157,7 @@
                               "fill": "$text-secondary",
                               "textGrowth": "fixed-width",
                               "width": "fill_container",
-                              "content": "Lillard & Peterson (2011): ~5,5 cortes/min redujeron la función ejecutiva en niños de 4 años; ~1–2 cortes/min no. Confirmado por metaanálisis de 2025 (Hinten et al.).",
+                              "content": "Lillard & Peterson (2011): ~5.5 cuts/min impaired executive function in 4-year-olds; ~1–2 cuts/min did not. Confirmed by a 2025 meta-analysis (Hinten et al.).",
                               "lineHeight": 1.5,
                               "fontFamily": "$font-body",
                               "fontSize": 12,
@@ -2170,7 +2170,7 @@
                     {
                       "type": "frame",
                       "id": "Ckj80",
-                      "name": "Meth Destellos",
+                      "name": "Meth Flashes",
                       "width": "fill_container",
                       "fill": "$surface",
                       "cornerRadius": "$radius-tile",
@@ -2223,7 +2223,7 @@
                               "id": "GtZBA",
                               "name": "Meth Tile Title",
                               "fill": "$text-primary",
-                              "content": "Destellos",
+                              "content": "Flashes",
                               "fontFamily": "$font-heading",
                               "fontSize": 18,
                               "fontWeight": "600"
@@ -2237,7 +2237,7 @@
                           "fill": "$text-primary",
                           "textGrowth": "fixed-width",
                           "width": "fill_container",
-                          "content": "Cambios bruscos de luz que pueden resultar molestos o, en casos extremos, peligrosos.",
+                          "content": "Abrupt changes in light that can be unpleasant or, in extreme cases, dangerous.",
                           "lineHeight": 1.55,
                           "fontFamily": "$font-body",
                           "fontSize": 14,
@@ -2262,7 +2262,7 @@
                               "id": "foSld",
                               "name": "Base Label",
                               "fill": "$text-muted",
-                              "content": "BASE CIENTÍFICA",
+                              "content": "SCIENTIFIC BASIS",
                               "fontFamily": "$font-body",
                               "fontSize": 10,
                               "fontWeight": "700",
@@ -2275,7 +2275,7 @@
                               "fill": "$text-secondary",
                               "textGrowth": "fixed-width",
                               "width": "fill_container",
-                              "content": "WCAG 2.3.1 simplificada: más de 3 destellos/s puede provocar crisis en personas con epilepsia fotosensible. Si se supera, EdadPlay siempre avisa.",
+                              "content": "Simplified WCAG 2.3.1: more than 3 flashes/s can trigger seizures in people with photosensitive epilepsy. If it is exceeded, Kiddometer always warns.",
                               "lineHeight": 1.5,
                               "fontFamily": "$font-body",
                               "fontSize": 12,
@@ -2288,7 +2288,7 @@
                     {
                       "type": "frame",
                       "id": "iyRVv",
-                      "name": "Meth Picos de volumen",
+                      "name": "Meth Volume peaks",
                       "width": "fill_container",
                       "fill": "$surface",
                       "cornerRadius": "$radius-tile",
@@ -2341,7 +2341,7 @@
                               "id": "c7AzG",
                               "name": "Meth Tile Title",
                               "fill": "$text-primary",
-                              "content": "Picos de volumen",
+                              "content": "Volume peaks",
                               "fontFamily": "$font-heading",
                               "fontSize": 18,
                               "fontWeight": "600"
@@ -2355,7 +2355,7 @@
                           "fill": "$text-primary",
                           "textGrowth": "fixed-width",
                           "width": "fill_container",
-                          "content": "Sustos y golpes de efecto: subidas de sonido muy por encima de la media del propio vídeo.",
+                          "content": "Jumpscares and sound stings: loudness spikes far above the video's own average.",
                           "lineHeight": 1.55,
                           "fontFamily": "$font-body",
                           "fontSize": 14,
@@ -2380,7 +2380,7 @@
                               "id": "gbJOr",
                               "name": "Base Label",
                               "fill": "$text-muted",
-                              "content": "BASE CIENTÍFICA",
+                              "content": "SCIENTIFIC BASIS",
                               "fontFamily": "$font-body",
                               "fontSize": 10,
                               "fontWeight": "700",
@@ -2393,7 +2393,7 @@
                               "fill": "$text-secondary",
                               "textGrowth": "fixed-width",
                               "width": "fill_container",
-                              "content": "Sonoridad con filtro K de ITU-R BT.1770 (estándar de TV, base de EBU R128) en ventanas de 400 ms. La OMS sitúa la escucha segura infantil por debajo de 75 dB.",
+                              "content": "ITU-R BT.1770 K-weighted loudness (the TV standard behind EBU R128) in 400 ms windows. The WHO sets safe listening for children below 75 dB.",
                               "lineHeight": 1.5,
                               "fontFamily": "$font-body",
                               "fontSize": 12,
@@ -2415,7 +2415,7 @@
                     {
                       "type": "frame",
                       "id": "X3ORqU",
-                      "name": "Meth Densidad sonora",
+                      "name": "Meth Sound density",
                       "width": "fill_container",
                       "fill": "$surface",
                       "cornerRadius": "$radius-tile",
@@ -2468,7 +2468,7 @@
                               "id": "BmQ7L",
                               "name": "Meth Tile Title",
                               "fill": "$text-primary",
-                              "content": "Densidad sonora",
+                              "content": "Sound density",
                               "fontFamily": "$font-heading",
                               "fontSize": 18,
                               "fontWeight": "600"
@@ -2482,7 +2482,7 @@
                           "fill": "$text-primary",
                           "textGrowth": "fixed-width",
                           "width": "fill_container",
-                          "content": "Cuántos sonidos llamativos por minuto bombardean el oído: efectos, golpes, exclamaciones.",
+                          "content": "How many striking sounds per minute bombard the ear: effects, stings, exclamations.",
                           "lineHeight": 1.55,
                           "fontFamily": "$font-body",
                           "fontSize": 14,
@@ -2507,7 +2507,7 @@
                               "id": "q9mdWA",
                               "name": "Base Label",
                               "fill": "$text-muted",
-                              "content": "BASE CIENTÍFICA",
+                              "content": "SCIENTIFIC BASIS",
                               "fontFamily": "$font-body",
                               "fontSize": 10,
                               "fontWeight": "700",
@@ -2520,7 +2520,7 @@
                               "fill": "$text-secondary",
                               "textGrowth": "fixed-width",
                               "width": "fill_container",
-                              "content": "Christakis et al. (PNAS 2018): la estimulación audiovisual excesiva en edades tempranas se vincula con problemas posteriores de atención.",
+                              "content": "Christakis et al. (PNAS 2018): excessive audiovisual stimulation at early ages is linked to later attention problems.",
                               "lineHeight": 1.5,
                               "fontFamily": "$font-body",
                               "fontSize": 12,
@@ -2533,7 +2533,7 @@
                     {
                       "type": "frame",
                       "id": "ZmDow",
-                      "name": "Meth Movimiento en pantalla",
+                      "name": "Meth On-screen motion",
                       "width": "fill_container",
                       "fill": "$surface",
                       "cornerRadius": "$radius-tile",
@@ -2586,7 +2586,7 @@
                               "id": "tHjlD",
                               "name": "Meth Tile Title",
                               "fill": "$text-primary",
-                              "content": "Movimiento en pantalla",
+                              "content": "On-screen motion",
                               "fontFamily": "$font-heading",
                               "fontSize": 18,
                               "fontWeight": "600"
@@ -2600,7 +2600,7 @@
                           "fill": "$text-primary",
                           "textGrowth": "fixed-width",
                           "width": "fill_container",
-                          "content": "Cuánto se mueve la imagen dentro de un mismo plano: una charla tranquila no es una persecución.",
+                          "content": "How much the image moves within a single shot: a calm talk is not a chase scene.",
                           "lineHeight": 1.55,
                           "fontFamily": "$font-body",
                           "fontSize": 14,
@@ -2625,7 +2625,7 @@
                               "id": "E7OOcK",
                               "name": "Base Label",
                               "fill": "$text-muted",
-                              "content": "BASE CIENTÍFICA",
+                              "content": "SCIENTIFIC BASIS",
                               "fontFamily": "$font-body",
                               "fontSize": 10,
                               "fontWeight": "700",
@@ -2638,7 +2638,7 @@
                               "fill": "$text-secondary",
                               "textGrowth": "fixed-width",
                               "width": "fill_container",
-                              "content": "Cambio medio de luminancia entre fotogramas del mismo plano. Umbral heurístico.",
+                              "content": "Mean luminance change between frames of the same shot. Heuristic threshold.",
                               "lineHeight": 1.5,
                               "fontFamily": "$font-body",
                               "fontSize": 12,
@@ -2651,7 +2651,7 @@
                     {
                       "type": "frame",
                       "id": "nHwnM",
-                      "name": "Meth Complejidad visual",
+                      "name": "Meth Visual complexity",
                       "width": "fill_container",
                       "fill": "$surface",
                       "cornerRadius": "$radius-tile",
@@ -2704,7 +2704,7 @@
                               "id": "wSJaK",
                               "name": "Meth Tile Title",
                               "fill": "$text-primary",
-                              "content": "Complejidad visual",
+                              "content": "Visual complexity",
                               "fontFamily": "$font-heading",
                               "fontSize": 18,
                               "fontWeight": "600"
@@ -2718,7 +2718,7 @@
                           "fill": "$text-primary",
                           "textGrowth": "fixed-width",
                           "width": "fill_container",
-                          "content": "Cuántos elementos compiten a la vez por la atención en pantalla.",
+                          "content": "How many elements compete at once for attention on screen.",
                           "lineHeight": 1.55,
                           "fontFamily": "$font-body",
                           "fontSize": 14,
@@ -2743,7 +2743,7 @@
                               "id": "YAsEo",
                               "name": "Base Label",
                               "fill": "$text-muted",
-                              "content": "BASE CIENTÍFICA",
+                              "content": "SCIENTIFIC BASIS",
                               "fontFamily": "$font-body",
                               "fontSize": 10,
                               "fontWeight": "700",
@@ -2756,7 +2756,7 @@
                               "fill": "$text-secondary",
                               "textGrowth": "fixed-width",
                               "width": "fill_container",
-                              "content": "Densidad de bordes (operador Sobel) por fotograma. Umbral heurístico.",
+                              "content": "Edge density (Sobel operator) per frame. Heuristic threshold.",
                               "lineHeight": 1.5,
                               "fontFamily": "$font-body",
                               "fontSize": 12,
@@ -2773,7 +2773,7 @@
             {
               "type": "frame",
               "id": "rSf3t",
-              "name": "Cómo se combina",
+              "name": "How it combines",
               "width": 1200,
               "fill": "$surface-inverse",
               "cornerRadius": "$radius-tile",
@@ -2794,7 +2794,7 @@
                       "id": "Rvyw5",
                       "name": "Combine Title",
                       "fill": "$text-inverse",
-                      "content": "Cómo se combina todo",
+                      "content": "How it all combines",
                       "fontFamily": "$font-heading",
                       "fontSize": 26,
                       "fontWeight": "700"
@@ -2806,7 +2806,7 @@
                       "fill": "$text-inverse-soft",
                       "textGrowth": "fixed-width",
                       "width": "fill_container",
-                      "content": "El vídeo se divide en tramos de 60 segundos. Cada tramo recibe la edad que exige su métrica más restrictiva. La clasificación global es el percentil 90 de los tramos: la intensidad sostenida manda y un único pico aislado no domina — esos picos se listan aparte como «momentos más intensos». Una violación del límite de destellos siempre genera advertencia.",
+                      "content": "The video is split into 60-second segments. Each segment gets the age its strictest metric demands. The overall rating is the 90th percentile across segments: sustained intensity decides and a single isolated peak does not dominate — those peaks are listed separately as \"most intense moments\". A flash-limit violation always raises a warning.",
                       "lineHeight": 1.65,
                       "fontFamily": "$font-body",
                       "fontSize": 14,
@@ -2830,7 +2830,7 @@
                       "id": "FGZkK",
                       "name": "Schematic Label",
                       "fill": "$text-inverse-soft",
-                      "content": "TRAMOS DE 60 s → EDAD POR TRAMO",
+                      "content": "60 s SEGMENTS → AGE PER SEGMENT",
                       "fontFamily": "$font-body",
                       "fontSize": 10,
                       "fontWeight": "700",
@@ -2948,7 +2948,7 @@
                           "id": "GpmIz",
                           "name": "P90 Label",
                           "fill": "$text-inverse-soft",
-                          "content": "percentil 90",
+                          "content": "90th percentile",
                           "fontFamily": "$font-data",
                           "fontSize": 12,
                           "fontWeight": "normal"
@@ -2999,7 +2999,7 @@
         {
           "type": "frame",
           "id": "TCHAN",
-          "name": "Referencias",
+          "name": "References",
           "width": "fill_container",
           "layout": "vertical",
           "gap": 24,
@@ -3029,7 +3029,7 @@
                       "icon": "book-open"
                     },
                     "nA7KI": {
-                      "content": "REFERENCIAS"
+                      "content": "REFERENCES"
                     }
                   }
                 },
@@ -3038,7 +3038,7 @@
                   "id": "M7TIm5",
                   "name": "Refs Title",
                   "fill": "$text-primary",
-                  "content": "La ciencia detrás de EdadPlay",
+                  "content": "The science behind Kiddometer",
                   "fontFamily": "$font-heading",
                   "fontSize": 28,
                   "fontWeight": "700"
@@ -3355,7 +3355,7 @@
                               "fill": "$text-muted",
                               "textGrowth": "fixed-width",
                               "width": "fill_container",
-                              "content": "Medición de sonoridad de programas.",
+                              "content": "Programme loudness measurement.",
                               "lineHeight": 1.45,
                               "fontFamily": "$font-body",
                               "fontSize": 12,
@@ -3473,7 +3473,7 @@
                               "fill": "$text-muted",
                               "textGrowth": "fixed-width",
                               "width": "fill_container",
-                              "content": "Escucha segura infantil: < 75 dB.",
+                              "content": "Safe listening for children: < 75 dB.",
                               "lineHeight": 1.45,
                               "fontFamily": "$font-body",
                               "fontSize": 12,
@@ -3582,7 +3582,7 @@
                   "id": "NWCeH",
                   "name": "CTA Title",
                   "fill": "$text-inverse",
-                  "content": "Decide con confianza qué ve tu peque",
+                  "content": "Confidently decide what your child watches",
                   "fontFamily": "$font-heading",
                   "fontSize": 34,
                   "fontWeight": "800"
@@ -3592,7 +3592,7 @@
                   "id": "adTo4",
                   "name": "CTA Sub",
                   "fill": "#EFEBFF",
-                  "content": "Gratis, de código abierto y 100 % privado: todo se analiza en tu dispositivo.",
+                  "content": "Free, open source and 100% private: everything is analyzed on your device.",
                   "fontFamily": "$font-body",
                   "fontSize": 16,
                   "fontWeight": "normal"
@@ -3664,7 +3664,7 @@
                   "id": "pYAu1",
                   "name": "Footer Word",
                   "fill": "$text-primary",
-                  "content": "EdadPlay",
+                  "content": "Kiddometer",
                   "fontFamily": "$font-heading",
                   "fontSize": 15,
                   "fontWeight": "700"
@@ -3676,7 +3676,7 @@
               "id": "KD20Y",
               "name": "Footer Text",
               "fill": "$text-muted",
-              "content": "Herramienta orientativa: no sustituye el criterio de padres o profesionales. Código abierto · análisis 100 % local.",
+              "content": "An orientation tool: it does not replace the judgement of parents or professionals. Open source · 100% local analysis.",
               "fontFamily": "$font-body",
               "fontSize": 12,
               "fontWeight": "normal"
@@ -3701,9 +3701,9 @@
                 {
                   "type": "text",
                   "id": "Yb4b9",
-                  "name": "Privacidad",
+                  "name": "Privacy",
                   "fill": "$text-secondary",
-                  "content": "Privacidad",
+                  "content": "Privacy",
                   "fontFamily": "$font-body",
                   "fontSize": 12,
                   "fontWeight": "500"
@@ -3719,7 +3719,7 @@
       "id": "pFogS",
       "x": 1560,
       "y": 166,
-      "name": "EdadPlay — Resultados",
+      "name": "Kiddometer — Results",
       "clip": true,
       "width": 1440,
       "fill": "$background",
@@ -3772,7 +3772,7 @@
                   "id": "K2HcqF",
                   "name": "Wordmark",
                   "fill": "$text-primary",
-                  "content": "EdadPlay",
+                  "content": "Kiddometer",
                   "fontFamily": "$font-heading",
                   "fontSize": 22,
                   "fontWeight": "700"
@@ -3789,9 +3789,9 @@
                 {
                   "type": "text",
                   "id": "OYzVz",
-                  "name": "Cómo funciona",
+                  "name": "How it works",
                   "fill": "$text-secondary",
-                  "content": "Cómo funciona",
+                  "content": "How it works",
                   "fontFamily": "$font-body",
                   "fontSize": 14,
                   "fontWeight": "500"
@@ -3799,9 +3799,9 @@
                 {
                   "type": "text",
                   "id": "u3aQfS",
-                  "name": "Metodología",
+                  "name": "Methodology",
                   "fill": "$text-secondary",
-                  "content": "Metodología",
+                  "content": "Methodology",
                   "fontFamily": "$font-body",
                   "fontSize": 14,
                   "fontWeight": "500"
@@ -3809,9 +3809,9 @@
                 {
                   "type": "text",
                   "id": "WIbq3",
-                  "name": "Referencias",
+                  "name": "References",
                   "fill": "$text-secondary",
-                  "content": "Referencias",
+                  "content": "References",
                   "fontFamily": "$font-body",
                   "fontSize": 14,
                   "fontWeight": "500"
@@ -3948,7 +3948,7 @@
                           "id": "HLVwK",
                           "name": "Done Text",
                           "fill": "#1B7A52",
-                          "content": "Analizado en 2:04 · 100 % local",
+                          "content": "Analyzed in 2:04 · 100% local",
                           "fontFamily": "$font-body",
                           "fontSize": 13,
                           "fontWeight": "600"
@@ -3992,7 +3992,7 @@
                           "id": "X5xvz",
                           "name": "DL Label",
                           "fill": "$accent",
-                          "content": "Descargar informe",
+                          "content": "Download report",
                           "fontFamily": "$font-body",
                           "fontSize": 14,
                           "fontWeight": "600"
@@ -4009,7 +4009,7 @@
                           "icon": "rotate-ccw"
                         },
                         "gzlwk": {
-                          "content": "Analizar otro vídeo"
+                          "content": "Analyze another video"
                         }
                       }
                     }
@@ -4095,7 +4095,7 @@
                               "id": "ouWw7",
                               "name": "Conf Text",
                               "fill": "$text-inverse-soft",
-                              "content": "Confianza alta · 9 tramos",
+                              "content": "High confidence · 9 segments",
                               "fontFamily": "$font-body",
                               "fontSize": 11,
                               "fontWeight": "600"
@@ -4117,7 +4117,7 @@
                           "id": "tnEg2",
                           "name": "Verdict Label",
                           "fill": "$text-inverse-soft",
-                          "content": "EDAD RECOMENDADA",
+                          "content": "RECOMMENDED AGE",
                           "fontFamily": "$font-body",
                           "fontSize": 11,
                           "fontWeight": "700",
@@ -4130,7 +4130,7 @@
                           "fill": "$text-inverse",
                           "textGrowth": "fixed-width",
                           "width": "fill_container",
-                          "content": "Mejor a partir de 13 años",
+                          "content": "Better from age 13",
                           "lineHeight": 1.15,
                           "fontFamily": "$font-heading",
                           "fontSize": 30,
@@ -4143,7 +4143,7 @@
                           "fill": "$text-inverse-soft",
                           "textGrowth": "fixed-width",
                           "width": "fill_container",
-                          "content": "Ritmo de edición muy rápido, subidas de volumen frecuentes y muchos estímulos sonoros sostenidos. Para menores de 13 años resulta agotador para la atención.",
+                          "content": "A very fast editing pace, frequent volume spikes and many sustained sound stimuli. For children under 13 it is exhausting for attention.",
                           "lineHeight": 1.6,
                           "fontFamily": "$font-body",
                           "fontSize": 14,
@@ -4194,7 +4194,7 @@
                               "id": "SeaqA",
                               "name": "Warn Title",
                               "fill": "#B22650",
-                              "content": "Advertencia de destellos",
+                              "content": "Flash warning",
                               "fontFamily": "$font-heading",
                               "fontSize": 17,
                               "fontWeight": "700"
@@ -4208,7 +4208,7 @@
                           "fill": "$text-primary",
                           "textGrowth": "fixed-width",
                           "width": "fill_container",
-                          "content": "Supera los 3 destellos por segundo (WCAG 2.3.1) entre 4:00 y 5:00. No recomendado para personas con epilepsia fotosensible, a cualquier edad.",
+                          "content": "Exceeds 3 flashes per second (WCAG 2.3.1) between 4:00 and 5:00. Not recommended for people with photosensitive epilepsy, at any age.",
                           "lineHeight": 1.55,
                           "fontFamily": "$font-body",
                           "fontSize": 13,
@@ -4249,7 +4249,7 @@
                               "id": "TjbGm",
                               "name": "Advice Title",
                               "fill": "$text-primary",
-                              "content": "En pocas palabras",
+                              "content": "In short",
                               "fontFamily": "$font-heading",
                               "fontSize": 17,
                               "fontWeight": "700"
@@ -4263,7 +4263,7 @@
                           "fill": "$text-secondary",
                           "textGrowth": "fixed-width",
                           "width": "fill_container",
-                          "content": "Si lo van a ver peques, baja el volumen, acompáñalos y evita el tramo 4:00–5:00. Mejor no verlo justo antes de dormir.",
+                          "content": "If young children are going to watch it, turn the volume down, watch it with them and skip the 4:00–5:00 segment. Better not to watch it right before bedtime.",
                           "lineHeight": 1.6,
                           "fontFamily": "$font-body",
                           "fontSize": 13,
@@ -4328,7 +4328,7 @@
                               "id": "BgqYI",
                               "name": "TL Title",
                               "fill": "$text-primary",
-                              "content": "Intensidad minuto a minuto",
+                              "content": "Intensity minute by minute",
                               "fontFamily": "$font-heading",
                               "fontSize": 20,
                               "fontWeight": "700"
@@ -4338,7 +4338,7 @@
                               "id": "dsvvr",
                               "name": "TL Sub",
                               "fill": "$text-muted",
-                              "content": "Cada barra es un tramo de 60 s · el color indica la edad que exige",
+                              "content": "Each bar is a 60 s segment · the color shows the age it demands",
                               "fontFamily": "$font-body",
                               "fontSize": 13,
                               "fontWeight": "normal"
@@ -4705,7 +4705,7 @@
                           "id": "o26qXa",
                           "name": "TL Foot Text",
                           "fill": "$text-muted",
-                          "content": "La clasificación global usa el percentil 90: la intensidad sostenida manda, un pico aislado no.",
+                          "content": "The overall rating uses the 90th percentile: sustained intensity decides, not an isolated peak.",
                           "fontFamily": "$font-body",
                           "fontSize": 12,
                           "fontWeight": "normal"
@@ -4747,7 +4747,7 @@
                           "id": "NY5Iw",
                           "name": "Moments Title",
                           "fill": "$text-primary",
-                          "content": "Momentos más intensos",
+                          "content": "Most intense moments",
                           "fontFamily": "$font-heading",
                           "fontSize": 18,
                           "fontWeight": "700"
@@ -4825,7 +4825,7 @@
                           "fill": "$text-secondary",
                           "textGrowth": "fixed-width",
                           "width": "fill_container",
-                          "content": "Destellos sobre el límite y picos de volumen",
+                          "content": "Flashes over the limit and volume spikes",
                           "lineHeight": 1.5,
                           "fontFamily": "$font-body",
                           "fontSize": 13,
@@ -4904,7 +4904,7 @@
                           "fill": "$text-secondary",
                           "textGrowth": "fixed-width",
                           "width": "fill_container",
-                          "content": "14 cortes de plano en un solo minuto",
+                          "content": "14 shot cuts in a single minute",
                           "lineHeight": 1.5,
                           "fontFamily": "$font-body",
                           "fontSize": 13,
@@ -4983,7 +4983,7 @@
                           "fill": "$text-secondary",
                           "textGrowth": "fixed-width",
                           "width": "fill_container",
-                          "content": "Subida brusca de volumen (+9 dB)",
+                          "content": "Abrupt volume spike (+9 dB)",
                           "lineHeight": 1.5,
                           "fontFamily": "$font-body",
                           "fontSize": 13,
@@ -5030,7 +5030,7 @@
                       "id": "pYLK1",
                       "name": "Metrics Title",
                       "fill": "$text-primary",
-                      "content": "Métricas en detalle",
+                      "content": "Metrics in detail",
                       "fontFamily": "$font-heading",
                       "fontSize": 28,
                       "fontWeight": "700"
@@ -5040,7 +5040,7 @@
                       "id": "f44f5m",
                       "name": "Metrics Sub",
                       "fill": "$text-secondary",
-                      "content": "Cada métrica se compara con los umbrales por edad. La más exigente decide.",
+                      "content": "Each metric is compared with the age thresholds. The strictest one decides.",
                       "fontFamily": "$font-body",
                       "fontSize": 14,
                       "fontWeight": "normal"
@@ -5057,7 +5057,7 @@
                       "icon": "chart-no-axes-column"
                     },
                     "nA7KI": {
-                      "content": "MODO EXPERTO"
+                      "content": "EXPERT MODE"
                     }
                   }
                 }
@@ -5081,7 +5081,7 @@
                     {
                       "type": "frame",
                       "id": "UQ57p",
-                      "name": "Metric Cortes visuales",
+                      "name": "Metric Visual cuts",
                       "width": "fill_container",
                       "fill": "$surface",
                       "cornerRadius": "$radius-tile",
@@ -5119,7 +5119,7 @@
                                   "id": "S6coFE",
                                   "name": "MC Title",
                                   "fill": "$text-primary",
-                                  "content": "Cortes visuales",
+                                  "content": "Visual cuts",
                                   "fontFamily": "$font-body",
                                   "fontSize": 14,
                                   "fontWeight": "600"
@@ -5178,7 +5178,7 @@
                                   "id": "X6LtP0",
                                   "name": "MC Unit",
                                   "fill": "$text-muted",
-                                  "content": "cortes / min",
+                                  "content": "cuts / min",
                                   "fontFamily": "$font-body",
                                   "fontSize": 12,
                                   "fontWeight": "normal"
@@ -5288,7 +5288,7 @@
                               "fill": "$text-secondary",
                               "textGrowth": "fixed-width",
                               "width": "fill_container",
-                              "content": "Umbral 7–12: ≤ 8 · lo supera de forma sostenida",
+                              "content": "Threshold 7–12: ≤ 8 · exceeds it consistently",
                               "lineHeight": 1.45,
                               "fontFamily": "$font-body",
                               "fontSize": 12,
@@ -5301,7 +5301,7 @@
                     {
                       "type": "frame",
                       "id": "KwGuZ",
-                      "name": "Metric Destellos",
+                      "name": "Metric Flashes",
                       "width": "fill_container",
                       "fill": "$surface",
                       "cornerRadius": "$radius-tile",
@@ -5339,7 +5339,7 @@
                                   "id": "gA6vy",
                                   "name": "MC Title",
                                   "fill": "$text-primary",
-                                  "content": "Destellos",
+                                  "content": "Flashes",
                                   "fontFamily": "$font-body",
                                   "fontSize": 14,
                                   "fontWeight": "600"
@@ -5361,7 +5361,7 @@
                                   "fill": "$age-13"
                                 },
                                 "G7KzF": {
-                                  "content": "Aviso",
+                                  "content": "Warning",
                                   "fontSize": 11
                                 }
                               }
@@ -5398,7 +5398,7 @@
                                   "id": "fi646",
                                   "name": "MC Unit",
                                   "fill": "$text-muted",
-                                  "content": "destellos / s (máx.)",
+                                  "content": "flashes / s (max)",
                                   "fontFamily": "$font-body",
                                   "fontSize": 12,
                                   "fontWeight": "normal"
@@ -5508,7 +5508,7 @@
                               "fill": "$text-secondary",
                               "textGrowth": "fixed-width",
                               "width": "fill_container",
-                              "content": "Límite WCAG 2.3.1: 3/s · genera advertencia explícita",
+                              "content": "WCAG 2.3.1 limit: 3/s · raises an explicit warning",
                               "lineHeight": 1.45,
                               "fontFamily": "$font-body",
                               "fontSize": 12,
@@ -5521,7 +5521,7 @@
                     {
                       "type": "frame",
                       "id": "R3zjH",
-                      "name": "Metric Picos de volumen",
+                      "name": "Metric Volume peaks",
                       "width": "fill_container",
                       "fill": "$surface",
                       "cornerRadius": "$radius-tile",
@@ -5559,7 +5559,7 @@
                                   "id": "Nu6dp",
                                   "name": "MC Title",
                                   "fill": "$text-primary",
-                                  "content": "Picos de volumen",
+                                  "content": "Volume peaks",
                                   "fontFamily": "$font-body",
                                   "fontSize": 14,
                                   "fontWeight": "600"
@@ -5618,7 +5618,7 @@
                                   "id": "Jaedo",
                                   "name": "MC Unit",
                                   "fill": "$text-muted",
-                                  "content": "dB sobre la media",
+                                  "content": "dB over average",
                                   "fontFamily": "$font-body",
                                   "fontSize": 12,
                                   "fontWeight": "normal"
@@ -5728,7 +5728,7 @@
                               "fill": "$text-secondary",
                               "textGrowth": "fixed-width",
                               "width": "fill_container",
-                              "content": "Umbral 7–12: ≤ 12 dB · sustos frecuentes",
+                              "content": "Threshold 7–12: ≤ 12 dB · frequent jumpscares",
                               "lineHeight": 1.45,
                               "fontFamily": "$font-body",
                               "fontSize": 12,
@@ -5750,7 +5750,7 @@
                     {
                       "type": "frame",
                       "id": "O3ETFJ",
-                      "name": "Metric Densidad sonora",
+                      "name": "Metric Sound density",
                       "width": "fill_container",
                       "fill": "$surface",
                       "cornerRadius": "$radius-tile",
@@ -5788,7 +5788,7 @@
                                   "id": "ASlij",
                                   "name": "MC Title",
                                   "fill": "$text-primary",
-                                  "content": "Densidad sonora",
+                                  "content": "Sound density",
                                   "fontFamily": "$font-body",
                                   "fontSize": 14,
                                   "fontWeight": "600"
@@ -5847,7 +5847,7 @@
                                   "id": "BZUl4",
                                   "name": "MC Unit",
                                   "fill": "$text-muted",
-                                  "content": "eventos / min",
+                                  "content": "events / min",
                                   "fontFamily": "$font-body",
                                   "fontSize": 12,
                                   "fontWeight": "normal"
@@ -5957,7 +5957,7 @@
                               "fill": "$text-secondary",
                               "textGrowth": "fixed-width",
                               "width": "fill_container",
-                              "content": "Umbral 7–12: ≤ 20 · estimulación sonora alta",
+                              "content": "Threshold 7–12: ≤ 20 · high sound stimulation",
                               "lineHeight": 1.45,
                               "fontFamily": "$font-body",
                               "fontSize": 12,
@@ -5970,7 +5970,7 @@
                     {
                       "type": "frame",
                       "id": "wdUel",
-                      "name": "Metric Movimiento en pantalla",
+                      "name": "Metric On-screen motion",
                       "width": "fill_container",
                       "fill": "$surface",
                       "cornerRadius": "$radius-tile",
@@ -6008,7 +6008,7 @@
                                   "id": "BCeak",
                                   "name": "MC Title",
                                   "fill": "$text-primary",
-                                  "content": "Movimiento en pantalla",
+                                  "content": "On-screen motion",
                                   "fontFamily": "$font-body",
                                   "fontSize": 14,
                                   "fontWeight": "600"
@@ -6067,7 +6067,7 @@
                                   "id": "f0hwNm",
                                   "name": "MC Unit",
                                   "fill": "$text-muted",
-                                  "content": "índice 0–10",
+                                  "content": "index 0–10",
                                   "fontFamily": "$font-body",
                                   "fontSize": 12,
                                   "fontWeight": "normal"
@@ -6177,7 +6177,7 @@
                               "fill": "$text-secondary",
                               "textGrowth": "fixed-width",
                               "width": "fill_container",
-                              "content": "Por debajo de todos los umbrales · escenas tranquilas",
+                              "content": "Below all thresholds · calm scenes",
                               "lineHeight": 1.45,
                               "fontFamily": "$font-body",
                               "fontSize": 12,
@@ -6190,7 +6190,7 @@
                     {
                       "type": "frame",
                       "id": "mDSC3",
-                      "name": "Metric Complejidad visual",
+                      "name": "Metric Visual complexity",
                       "width": "fill_container",
                       "fill": "$surface",
                       "cornerRadius": "$radius-tile",
@@ -6228,7 +6228,7 @@
                                   "id": "A3C4m",
                                   "name": "MC Title",
                                   "fill": "$text-primary",
-                                  "content": "Complejidad visual",
+                                  "content": "Visual complexity",
                                   "fontFamily": "$font-body",
                                   "fontSize": 14,
                                   "fontWeight": "600"
@@ -6287,7 +6287,7 @@
                                   "id": "I5Ggfw",
                                   "name": "MC Unit",
                                   "fill": "$text-muted",
-                                  "content": "índice 0–100",
+                                  "content": "index 0–100",
                                   "fontFamily": "$font-body",
                                   "fontSize": 12,
                                   "fontWeight": "normal"
@@ -6397,7 +6397,7 @@
                               "fill": "$text-secondary",
                               "textGrowth": "fixed-width",
                               "width": "fill_container",
-                              "content": "Muchos elementos compiten por la atención · umbral heurístico",
+                              "content": "Many elements compete for attention · heuristic threshold",
                               "lineHeight": 1.45,
                               "fontFamily": "$font-body",
                               "fontSize": 12,
@@ -6515,7 +6515,7 @@
                               "id": "vZwta",
                               "name": "Donut Cap",
                               "fill": "$text-muted",
-                              "content": "tramos",
+                              "content": "segments",
                               "fontFamily": "$font-body",
                               "fontSize": 12,
                               "fontWeight": "normal"
@@ -6537,7 +6537,7 @@
                           "id": "ZbSYI",
                           "name": "Donut Title",
                           "fill": "$text-primary",
-                          "content": "Distribución de tramos",
+                          "content": "Segment distribution",
                           "fontFamily": "$font-heading",
                           "fontSize": 18,
                           "fontWeight": "700"
@@ -6582,7 +6582,7 @@
                               "id": "Fx4lZ",
                               "name": "Dist Value",
                               "fill": "$text-secondary",
-                              "content": "3 tramos · 33 %",
+                              "content": "3 segments · 33%",
                               "fontFamily": "$font-data",
                               "fontSize": 12,
                               "fontWeight": "normal"
@@ -6629,7 +6629,7 @@
                               "id": "VC7ck",
                               "name": "Dist Value",
                               "fill": "$text-secondary",
-                              "content": "2 tramos · 22 %",
+                              "content": "2 segments · 22%",
                               "fontFamily": "$font-data",
                               "fontSize": 12,
                               "fontWeight": "normal"
@@ -6676,7 +6676,7 @@
                               "id": "DYLk1",
                               "name": "Dist Value",
                               "fill": "$text-secondary",
-                              "content": "3 tramos · 33 %",
+                              "content": "3 segments · 33%",
                               "fontFamily": "$font-data",
                               "fontSize": 12,
                               "fontWeight": "normal"
@@ -6723,7 +6723,7 @@
                               "id": "AaBqN",
                               "name": "Dist Value",
                               "fill": "$text-secondary",
-                              "content": "1 tramo · 11 %",
+                              "content": "1 segment · 11%",
                               "fontFamily": "$font-data",
                               "fontSize": 12,
                               "fontWeight": "normal"
@@ -6767,7 +6767,7 @@
                           "id": "BbFob",
                           "name": "Tips Title",
                           "fill": "$text-primary",
-                          "content": "Qué puedes hacer",
+                          "content": "What you can do",
                           "fontFamily": "$font-heading",
                           "fontSize": 18,
                           "fontWeight": "700"
@@ -6792,7 +6792,7 @@
                             {
                               "type": "frame",
                               "id": "Q0n7bd",
-                              "name": "Tip Verlo acompañado",
+                              "name": "Tip Watch it together",
                               "width": "fill_container",
                               "fill": "$background",
                               "cornerRadius": "$radius-nested",
@@ -6835,7 +6835,7 @@
                                       "id": "Hrb8U",
                                       "name": "Tip Title",
                                       "fill": "$text-primary",
-                                      "content": "Verlo acompañado",
+                                      "content": "Watch it together",
                                       "fontFamily": "$font-body",
                                       "fontSize": 13,
                                       "fontWeight": "600"
@@ -6847,7 +6847,7 @@
                                       "fill": "$text-secondary",
                                       "textGrowth": "fixed-width",
                                       "width": "fill_container",
-                                      "content": "Comentar lo que pasa reduce el impacto de los estímulos.",
+                                      "content": "Talking about what happens reduces the impact of the stimuli.",
                                       "lineHeight": 1.45,
                                       "fontFamily": "$font-body",
                                       "fontSize": 12,
@@ -6860,7 +6860,7 @@
                             {
                               "type": "frame",
                               "id": "hKgfz",
-                              "name": "Tip Volumen por debajo de 75 dB",
+                              "name": "Tip Volume below 75 dB",
                               "width": "fill_container",
                               "fill": "$background",
                               "cornerRadius": "$radius-nested",
@@ -6903,7 +6903,7 @@
                                       "id": "Aj1Tq",
                                       "name": "Tip Title",
                                       "fill": "$text-primary",
-                                      "content": "Volumen por debajo de 75 dB",
+                                      "content": "Volume below 75 dB",
                                       "fontFamily": "$font-body",
                                       "fontSize": 13,
                                       "fontWeight": "600"
@@ -6915,7 +6915,7 @@
                                       "fill": "$text-secondary",
                                       "textGrowth": "fixed-width",
                                       "width": "fill_container",
-                                      "content": "Escucha segura infantil según la OMS.",
+                                      "content": "Safe listening for children according to the WHO.",
                                       "lineHeight": 1.45,
                                       "fontFamily": "$font-body",
                                       "fontSize": 12,
@@ -6937,7 +6937,7 @@
                             {
                               "type": "frame",
                               "id": "Mo6dS",
-                              "name": "Tip Saltar el tramo 4:00–5:00",
+                              "name": "Tip Skip the 4:00–5:00 segment",
                               "width": "fill_container",
                               "fill": "$background",
                               "cornerRadius": "$radius-nested",
@@ -6980,7 +6980,7 @@
                                       "id": "RmaTo",
                                       "name": "Tip Title",
                                       "fill": "$text-primary",
-                                      "content": "Saltar el tramo 4:00–5:00",
+                                      "content": "Skip the 4:00–5:00 segment",
                                       "fontFamily": "$font-body",
                                       "fontSize": 13,
                                       "fontWeight": "600"
@@ -6992,7 +6992,7 @@
                                       "fill": "$text-secondary",
                                       "textGrowth": "fixed-width",
                                       "width": "fill_container",
-                                      "content": "Concentra los destellos y los picos de volumen.",
+                                      "content": "It concentrates the flashes and volume spikes.",
                                       "lineHeight": 1.45,
                                       "fontFamily": "$font-body",
                                       "fontSize": 12,
@@ -7005,7 +7005,7 @@
                             {
                               "type": "frame",
                               "id": "vdyh1",
-                              "name": "Tip No justo antes de dormir",
+                              "name": "Tip Not right before bedtime",
                               "width": "fill_container",
                               "fill": "$background",
                               "cornerRadius": "$radius-nested",
@@ -7048,7 +7048,7 @@
                                       "id": "GLBx4",
                                       "name": "Tip Title",
                                       "fill": "$text-primary",
-                                      "content": "No justo antes de dormir",
+                                      "content": "Not right before bedtime",
                                       "fontFamily": "$font-body",
                                       "fontSize": 13,
                                       "fontWeight": "600"
@@ -7060,7 +7060,7 @@
                                       "fill": "$text-secondary",
                                       "textGrowth": "fixed-width",
                                       "width": "fill_container",
-                                      "content": "El ritmo rápido activa en lugar de relajar.",
+                                      "content": "The fast pace stimulates instead of relaxing.",
                                       "lineHeight": 1.45,
                                       "fontFamily": "$font-body",
                                       "fontSize": 12,
@@ -7120,7 +7120,7 @@
                       "id": "t1TCbz",
                       "name": "CTA Title",
                       "fill": "$text-inverse",
-                      "content": "¿Otro vídeo en la lista?",
+                      "content": "Another video in the queue?",
                       "fontFamily": "$font-heading",
                       "fontSize": 26,
                       "fontWeight": "700"
@@ -7130,7 +7130,7 @@
                       "id": "XYjaq",
                       "name": "CTA Sub",
                       "fill": "#E3DCFF",
-                      "content": "Analiza tantos como quieras: todo ocurre en tu navegador, gratis y sin subir nada.",
+                      "content": "Analyze as many as you want: everything happens in your browser, free and with nothing uploaded.",
                       "fontFamily": "$font-body",
                       "fontSize": 14,
                       "fontWeight": "normal"
@@ -7165,7 +7165,7 @@
                       "id": "qX7e2",
                       "name": "CTA Label",
                       "fill": "$accent",
-                      "content": "Analizar otro vídeo",
+                      "content": "Analyze another video",
                       "fontFamily": "$font-body",
                       "fontSize": 15,
                       "fontWeight": "600"
@@ -7224,7 +7224,7 @@
                   "id": "I1VAG",
                   "name": "Footer Word",
                   "fill": "$text-primary",
-                  "content": "EdadPlay",
+                  "content": "Kiddometer",
                   "fontFamily": "$font-heading",
                   "fontSize": 15,
                   "fontWeight": "700"
@@ -7236,7 +7236,7 @@
               "id": "SzFd5",
               "name": "Footer Text",
               "fill": "$text-muted",
-              "content": "Herramienta orientativa: no sustituye el criterio de padres o profesionales. Código abierto · análisis 100 % local.",
+              "content": "An orientation tool: it does not replace the judgement of parents or professionals. Open source · 100% local analysis.",
               "fontFamily": "$font-body",
               "fontSize": 12,
               "fontWeight": "normal"
@@ -7261,9 +7261,9 @@
                 {
                   "type": "text",
                   "id": "fySu9",
-                  "name": "Privacidad",
+                  "name": "Privacy",
                   "fill": "$text-secondary",
-                  "content": "Privacidad",
+                  "content": "Privacy",
                   "fontFamily": "$font-body",
                   "fontSize": 12,
                   "fontWeight": "500"

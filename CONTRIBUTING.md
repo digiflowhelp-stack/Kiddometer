@@ -9,8 +9,8 @@ Static web app, vanilla JavaScript, zero dependencies and no build step. You nee
 ## Setup
 
 ```bash
-git clone https://github.com/episuarez/edadPlay
-cd edadPlay/docs
+git clone https://github.com/digiflowhelp-stack/Kiddometer
+cd Kiddometer/docs
 python -m http.server 8000
 # http://localhost:8000
 ```
@@ -26,7 +26,7 @@ Backend:
 cd backend
 pip install -r requirements.txt
 uvicorn main:app --port 8000          # quick loop
-docker build -t edadplay-backend .    # what HF Spaces actually runs
+docker build -t kiddometer-backend .    # what HF Spaces actually runs
 ```
 
 ## Code style
@@ -34,7 +34,7 @@ docker build -t edadplay-backend .    # what HF Spaces actually runs
 - Vanilla ES modules. No frameworks, no bundlers, no new dependencies without
   strong justification (the zero-dependency frontend is a feature).
 - Design tokens live in `docs/css/styles.css` and mirror `design/desgin.pen`.
-- UI copy in Spanish; code, comments and commits in English.
+- UI copy, code, comments and commits in English.
 - Age thresholds in `docs/js/scoring.js` must cite a source or be explicitly
   flagged `evidence: false` — the UI tells users which thresholds are
   heuristic. Calibration data and studies to back them are very welcome.

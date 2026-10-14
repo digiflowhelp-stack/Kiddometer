@@ -1,91 +1,91 @@
-# Despliegue en Hugging Face Spaces
+# Deploying to Hugging Face Spaces
 
-Resultado: backend en `https://<usuario>-edadplay-backend.hf.space` con HTTPS
-automático, 0 €/mes (CPU basic: 2 vCPU, 16 GB RAM).
+Result: backend at `https://<user>-kiddometer-backend.hf.space` with automatic
+HTTPS, €0/month (CPU basic: 2 vCPU, 16 GB RAM).
 
-## 1. Crear el Space (2 minutos)
+## 1. Create the Space (2 minutes)
 
-1. Cuenta en [huggingface.co](https://huggingface.co/join) (gratis, sin tarjeta).
-2. [Nuevo Space](https://huggingface.co/new-space):
-   - **Space name**: `edadplay-backend`
-   - **License**: la que uses en el repo (MIT/GPL…)
+1. Account at [huggingface.co](https://huggingface.co/join) (free, no card).
+2. [New Space](https://huggingface.co/new-space):
+   - **Space name**: `kiddometer-backend`
+   - **License**: the one you use in the repo (MIT/GPL…)
    - **SDK**: **Docker** → *Blank*
    - **Hardware**: **CPU basic · Free**
    - **Visibility**: **Public**
 
-## 2. Subir los archivos del backend
+## 2. Upload the backend files
 
-Opción A — web (más fácil): en la pestaña **Files** del Space → *Add file* →
-*Upload files* y sube estos 5 archivos de la carpeta `backend/`:
+Option A — web (easiest): in the Space's **Files** tab → *Add file* →
+*Upload files* and upload these 5 files from the `backend/` folder:
 
 ```
 Dockerfile
 entrypoint.sh
 main.py
 requirements.txt
-README.md      (lleva la cabecera YAML que configura el Space — sobrescribe el creado por defecto)
+README.md      (it carries the YAML header that configures the Space — it overwrites the one created by default)
 ```
 
-Opción B — git:
+Option B — git:
 
 ```bash
-git clone https://huggingface.co/spaces/<usuario>/edadplay-backend
-cp backend/Dockerfile backend/entrypoint.sh backend/main.py backend/requirements.txt backend/README.md edadplay-backend/
-cd edadplay-backend && git add -A && git commit -m "Add EdadPlay backend" && git push
-# usuario: tu usuario HF · contraseña: un Access Token (Settings → Access Tokens → write)
+git clone https://huggingface.co/spaces/<user>/kiddometer-backend
+cp backend/Dockerfile backend/entrypoint.sh backend/main.py backend/requirements.txt backend/README.md kiddometer-backend/
+cd kiddometer-backend && git add -A && git commit -m "Add Kiddometer backend" && git push
+# user: your HF user · password: an Access Token (Settings → Access Tokens → write)
 ```
 
-El Space construye la imagen solo (~3–5 min la primera vez; compila el
-provider de PO Tokens).
+The Space builds the image on its own (~3–5 min the first time; it compiles the
+PO Token provider).
 
-## 3. Configurar variables
+## 3. Configure variables
 
-En el Space → **Settings**:
+In the Space → **Settings**:
 
-- **Variables** → `ALLOWED_ORIGINS` = `https://<tuusuario>.github.io`
-- **Secrets** (opcional, capa extra anti-bloqueo) → `COOKIES_B64` = contenido
-  de `cookies.txt` en base64 (`base64 -w0 cookies.txt`), exportado de una
-  cuenta de YouTube **desechable**. Caduca en ~2 semanas.
+- **Variables** → `ALLOWED_ORIGINS` = `https://<youruser>.github.io`
+- **Secrets** (optional, extra anti-blocking layer) → `COOKIES_B64` = contents
+  of `cookies.txt` in base64 (`base64 -w0 cookies.txt`), exported from a
+  **throwaway** YouTube account. It expires in ~2 weeks.
 
-Cambiar variables reinicia el Space automáticamente.
+Changing variables restarts the Space automatically.
 
-## 4. Comprobar
+## 4. Check
 
-`https://<usuario>-edadplay-backend.hf.space/api/health` debe devolver:
+`https://<user>-kiddometer-backend.hf.space/api/health` must return:
 
 ```json
 {"ok": true, "ytdlp": "20xx.xx.xx", "pot_provider": true, "cookies": false}
 ```
 
-## 5. Conectar el frontend
+## 5. Connect the frontend
 
-En `docs/js/config.js`:
+In `docs/js/config.js`:
 
 ```js
-export const BACKEND_URL = 'https://<usuario>-edadplay-backend.hf.space';
+export const BACKEND_URL = 'https://<user>-kiddometer-backend.hf.space';
 ```
 
-Commit + push → GitHub Pages se actualiza y la pestaña YouTube queda activa.
+Commit + push → GitHub Pages updates and the YouTube tab becomes active.
 
-## Detalle importante: el Space duerme
+## Important detail: the Space sleeps
 
-El plan gratuito pausa el Space tras **48 h sin peticiones**. La siguiente
-petición lo despierta sola, pero tarda ~30–60 s (el frontend ya avisa de que
-puede tardar). Para mantenerlo siempre despierto: monitor gratuito de
-[UptimeRobot](https://uptimerobot.com) haciendo ping a `/api/health` cada
-30 minutos.
+The free plan pauses the Space after **48 h without requests**. The next
+request wakes it up on its own, but it takes ~30–60 s (the frontend already
+warns that it may take a while). To keep it always awake: a free
+[UptimeRobot](https://uptimerobot.com) monitor pinging `/api/health` every
+30 minutes.
 
-## Anti-bloqueo de YouTube (ya incluido)
+## YouTube anti-blocking (already included)
 
-| Capa | Qué hace |
+| Layer | What it does |
 |---|---|
-| PO Token provider (bgutil) | Tokens de "prueba de origen" — solución oficial de yt-dlp para IPs de datacenter |
-| Cadena de clientes | Reintenta con `mweb`, `web_safari`, `tv_embedded` si el cliente por defecto recibe el bloqueo |
-| Autoactualización | yt-dlp se actualiza solo cada 12 h dentro del contenedor |
-| Cookies (`COOKIES_B64`) | Capa más fuerte si los bloqueos persisten |
+| PO Token provider (bgutil) | "Proof of origin" tokens — yt-dlp's official solution for datacenter IPs |
+| Client chain | Retries with `mweb`, `web_safari`, `tv_embedded` if the default client gets the block |
+| Self-update | yt-dlp updates itself every 12 h inside the container |
+| Cookies (`COOKIES_B64`) | Strongest layer if the blocks persist |
 
-## Otras plataformas
+## Other platforms
 
-Funcionan bien desde datacenter: **Vimeo, Dailymotion, Twitch (VODs), TikTok,
-Reddit, X/Twitter** y cientos más. No soportados sin login: Instagram,
-Facebook. YouTube es el único con bloqueo activo; de ahí las capas de arriba.
+They work well from a datacenter: **Vimeo, Dailymotion, Twitch (VODs), TikTok,
+Reddit, X/Twitter** and hundreds more. Not supported without login: Instagram,
+Facebook. YouTube is the only one with active blocking; hence the layers above.

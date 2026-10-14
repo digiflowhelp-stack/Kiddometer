@@ -4,22 +4,22 @@
 import { BANDS, METRICS, METRIC_KEYS, bandIndexFor, summarizeMetric } from './scoring.js';
 
 const DRIVER_PHRASES = {
-  cortes: 'ritmo de edición muy rápido',
-  movimiento: 'mucho movimiento continuo en pantalla',
-  complejidad: 'imágenes muy cargadas de elementos',
-  flashes: 'destellos de luz intensos',
-  picosVolumen: 'subidas de volumen frecuentes',
-  densidadSonora: 'muchos estímulos sonoros sostenidos',
+  cuts: 'a very fast editing pace',
+  motion: 'a lot of continuous motion on screen',
+  complexity: 'images very crowded with elements',
+  flashes: 'intense light flashes',
+  volumePeaks: 'frequent volume spikes',
+  soundDensity: 'many sustained sound stimuli',
 };
 
 const VERDICT_TITLES = [
-  'Apto incluso para los más pequeños',
-  'Mejor a partir de 4 años',
-  'Mejor a partir de 7 años',
-  'Mejor a partir de 13 años',
+  'Suitable even for the youngest children',
+  'Better from age 4',
+  'Better from age 7',
+  'Better from age 13',
 ];
 
-const CALM_SUMMARY = 'Ritmo pausado, volumen estable y pocos estímulos. Un contenido tranquilo que no satura la atención.';
+const CALM_SUMMARY = 'Slow pace, steady volume and few stimuli. Calm content that does not overload attention.';
 
 export function formatTime(s) {
   const m = Math.floor(s / 60);
@@ -47,17 +47,17 @@ export function verdictSummary(drivers, overallIndex) {
   const phrases = drivers.map((k) => DRIVER_PHRASES[k]);
   let joined;
   if (phrases.length === 1) joined = phrases[0];
-  else joined = `${phrases.slice(0, -1).join(', ')} y ${phrases[phrases.length - 1]}`;
+  else joined = `${phrases.slice(0, -1).join(', ')} and ${phrases[phrases.length - 1]}`;
   const cap = joined.charAt(0).toUpperCase() + joined.slice(1);
-  const target = BANDS[overallIndex] === '13+' ? '13 años' : `${BANDS[overallIndex].split('-')[0]} años`;
-  return `${cap}. Para menores de ${target} resulta agotador para la atención.`;
+  const target = BANDS[overallIndex] === '13+' ? '13' : BANDS[overallIndex].split('-')[0];
+  return `${cap}. For children under ${target} it is exhausting for attention.`;
 }
 
 export function confidence(intervals) {
   const n = intervals.length;
-  if (n >= 8) return `Confianza alta · ${n} tramos`;
-  if (n >= 4) return `Confianza media · ${n} tramos`;
-  return `Confianza baja · vídeo corto (${n} ${n === 1 ? 'tramo' : 'tramos'})`;
+  if (n >= 8) return `High confidence · ${n} segments`;
+  if (n >= 4) return `Medium confidence · ${n} segments`;
+  return `Low confidence · short video (${n} ${n === 1 ? 'segment' : 'segments'})`;
 }
 
 // First time range where the WCAG flash limit is exceeded.
@@ -69,60 +69,60 @@ export function flashViolationRange(intervals) {
 }
 
 export function warningText(range) {
-  return `Supera los 3 destellos por segundo (WCAG 2.3.1) entre ${formatTime(range.start)} y ${formatTime(range.end)}. `
-    + 'No recomendado para personas con epilepsia fotosensible, a cualquier edad.';
+  return `Exceeds 3 flashes per second (WCAG 2.3.1) between ${formatTime(range.start)} and ${formatTime(range.end)}. `
+    + 'Not recommended for people with photosensitive epilepsy, at any age.';
 }
 
 export function advice(drivers, overallIndex, flashRange) {
   if (overallIndex === 0) {
-    return 'Contenido tranquilo. Aun así, mejor verlo acompañado, con el volumen moderado y sin alargar la sesión.';
+    return 'Calm content. Even so, better to watch it accompanied, at a moderate volume and without stretching the session.';
   }
   const parts = [];
-  if (drivers.includes('picosVolumen') || drivers.includes('densidadSonora')) {
-    parts.push('baja el volumen');
+  if (drivers.includes('volumePeaks') || drivers.includes('soundDensity')) {
+    parts.push('turn the volume down');
   }
-  parts.push('acompáñalos');
-  let text = `Si lo van a ver peques, ${parts.join(', ')}`;
+  parts.push('watch it with them');
+  let text = `If young children are going to watch it, ${parts.join(', ')}`;
   if (flashRange) {
-    text += ` y evita el tramo ${formatTime(flashRange.start)}–${formatTime(flashRange.end)}`;
+    text += ` and skip the ${formatTime(flashRange.start)}–${formatTime(flashRange.end)} segment`;
   }
   text += '.';
-  if (drivers.includes('cortes') || drivers.includes('movimiento') || overallIndex >= 2) {
-    text += ' Mejor no verlo justo antes de dormir.';
+  if (drivers.includes('cuts') || drivers.includes('motion') || overallIndex >= 2) {
+    text += ' Better not to watch it right before bedtime.';
   }
   return text;
 }
 
 export function buildTips(drivers, overallIndex, flashRange) {
   const tips = [
-    { title: 'Verlo acompañado', desc: 'Comentar lo que pasa reduce el impacto de los estímulos.' },
-    { title: 'Volumen por debajo de 75 dB', desc: 'Escucha segura infantil según la OMS.' },
+    { title: 'Watch it together', desc: 'Talking about what happens reduces the impact of the stimuli.' },
+    { title: 'Volume below 75 dB', desc: 'Safe listening for children according to the WHO.' },
   ];
   if (flashRange) {
     tips.push({
-      title: `Saltar el tramo ${formatTime(flashRange.start)}–${formatTime(flashRange.end)}`,
-      desc: 'Concentra los destellos y los picos de volumen.',
+      title: `Skip the ${formatTime(flashRange.start)}–${formatTime(flashRange.end)} segment`,
+      desc: 'It concentrates the flashes and volume spikes.',
     });
   }
-  if (drivers.includes('cortes') || drivers.includes('movimiento') || overallIndex >= 2) {
-    tips.push({ title: 'No justo antes de dormir', desc: 'El ritmo rápido activa en lugar de relajar.' });
+  if (drivers.includes('cuts') || drivers.includes('motion') || overallIndex >= 2) {
+    tips.push({ title: 'Not right before bedtime', desc: 'The fast pace stimulates instead of relaxing.' });
   }
   while (tips.length < 4) {
     tips.push(
-      { title: 'Pausas cada 20–30 minutos', desc: 'Descansar la vista y moverse equilibra la sesión.' },
-      { title: 'Alternar con juego sin pantalla', desc: 'La OMS recomienda priorizar el juego activo.' },
+      { title: 'Breaks every 20–30 minutes', desc: 'Resting your eyes and moving around balances the session.' },
+      { title: 'Alternate with screen-free play', desc: 'The WHO recommends prioritising active play.' },
     );
   }
   return tips.slice(0, 4);
 }
 
 const MOMENT_DESCRIPTIONS = {
-  cortes: (v) => `${Math.round(v)} cortes de plano en un solo minuto`,
-  picosVolumen: (v) => `Subida brusca de volumen (+${v} dB)`,
-  flashes: (v) => `Destellos sobre el límite (${v}/s)`,
-  densidadSonora: (v) => `${Math.round(v)} sonidos llamativos en un minuto`,
-  movimiento: () => 'Movimiento continuo muy elevado',
-  complejidad: () => 'Imagen muy cargada de elementos',
+  cuts: (v) => `${Math.round(v)} shot cuts in a single minute`,
+  volumePeaks: (v) => `Abrupt volume spike (+${v} dB)`,
+  flashes: (v) => `Flashes over the limit (${v}/s)`,
+  soundDensity: (v) => `${Math.round(v)} striking sounds in one minute`,
+  motion: () => 'Very high continuous motion',
+  complexity: () => 'Image very crowded with elements',
 };
 
 export function intenseMoments(intervals, overallIndex, maxItems = 3) {
@@ -139,7 +139,7 @@ export function intenseMoments(intervals, overallIndex, maxItems = 3) {
       start: iv.start,
       end: iv.end,
       bandIndex: iv.rating.bandIndex,
-      description: key ? MOMENT_DESCRIPTIONS[key](value) : 'Tramo intenso',
+      description: key ? MOMENT_DESCRIPTIONS[key](value) : 'Intense segment',
     };
   });
 }
@@ -157,14 +157,14 @@ export function intensityScore(interval) {
 
 export function metricCaption(key, summary, intervals) {
   const def = METRICS[key];
-  if (summary == null) return 'No evaluado en este análisis';
+  if (summary == null) return 'Not evaluated in this analysis';
   const idx = bandIndexFor(key, summary);
 
   if (key === 'flashes' && summary > def.thresholds[2]) {
-    return 'Límite WCAG 2.3.1: 3/s · genera advertencia explícita';
+    return 'WCAG 2.3.1 limit: 3/s · raises an explicit warning';
   }
   if (idx === 0) {
-    return `Por debajo de todos los umbrales · ${def.evidence ? 'sin riesgo conocido' : 'umbral heurístico'}`;
+    return `Below all thresholds · ${def.evidence ? 'no known risk' : 'heuristic threshold'}`;
   }
 
   const limit = def.thresholds[idx - 1];
@@ -173,6 +173,6 @@ export function metricCaption(key, summary, intervals) {
     return v != null && v > limit;
   }).length;
   const sustained = exceeding > intervals.length / 2;
-  const qualifier = sustained ? 'lo supera de forma sostenida' : 'lo supera en algunos tramos';
-  return `Umbral ${BANDS[idx - 1]}: ≤ ${limit}${key === 'picosVolumen' ? ' dB' : ''} · ${qualifier}`;
+  const qualifier = sustained ? 'exceeds it consistently' : 'exceeds it in some segments';
+  return `Threshold ${BANDS[idx - 1]}: ≤ ${limit}${key === 'volumePeaks' ? ' dB' : ''} · ${qualifier}`;
 }

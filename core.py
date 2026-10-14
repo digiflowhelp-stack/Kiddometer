@@ -8,221 +8,221 @@ import matplotlib.pyplot as plt
 import pandas as pd
 from streamlit_extras.metric_cards import style_metric_cards
 
-PARAMETROS_EDAD = {
-    '0-3': {'cortes': 2, 'volumen': 60, 'complejidad_visual': 50, 'densidad_sonora': 2},
-    '4-6': {'cortes': 4, 'volumen': 70, 'complejidad_visual': 100, 'densidad_sonora': 4},
-    '7-12': {'cortes': 8, 'volumen': 80, 'complejidad_visual': 150, 'densidad_sonora': 6},
-    '13+': {'cortes': float('inf'), 'volumen': 85, 'complejidad_visual': float('inf'), 'densidad_sonora': float('inf')}
+AGE_PARAMETERS = {
+    '0-3': {'cuts': 2, 'volume': 60, 'visual_complexity': 50, 'sound_density': 2},
+    '4-6': {'cuts': 4, 'volume': 70, 'visual_complexity': 100, 'sound_density': 4},
+    '7-12': {'cuts': 8, 'volume': 80, 'visual_complexity': 150, 'sound_density': 6},
+    '13+': {'cuts': float('inf'), 'volume': 85, 'visual_complexity': float('inf'), 'sound_density': float('inf')}
 }
 
-def detectar_cortes(clip, intervalo=1.0, umbral=0.6):
+def detect_cuts(clip, interval=1.0, threshold=0.6):
     """
-    Detecta cortes o transiciones significativas en un clip de video basado en diferencias de histogramas de color entre fotogramas.
+    Detects cuts or significant transitions in a video clip based on color histogram differences between frames.
 
-    Parámetros:
-    - clip: Objeto de video (por ejemplo, un VideoFileClip de MoviePy) del cual se extraerán los fotogramas.
-    - intervalo (float): Intervalo en segundos entre cada fotograma analizado. Por defecto es 1.0 segundo.
-    - umbral (float): Valor umbral de correlación entre histogramas para determinar un cambio significativo. Un valor menor indica mayor sensibilidad. Por defecto es 0.6.
+    Parameters:
+    - clip: Video object (for example, a MoviePy VideoFileClip) from which frames will be extracted.
+    - interval (float): Interval in seconds between each analyzed frame. Defaults to 1.0 second.
+    - threshold (float): Correlation threshold between histograms to determine a significant change. A lower value means greater sensitivity. Defaults to 0.6.
 
-    Proceso:
-    - Recorre el video en intervalos definidos extrayendo un fotograma en cada paso.
-    - Redimensiona cada fotograma a 320x180 píxeles para reducir la carga computacional.
-    - Calcula y normaliza el histograma de color (RGB) en 3 dimensiones, con 8 bins por canal.
-    - Compara el histograma del fotograma actual con el anterior usando la correlación.
-    - Si la similitud entre histogramas es menor que el umbral, se considera un corte.
-    - Devuelve el promedio de cortes por minuto, redondeado a dos decimales.
+    Process:
+    - Iterates over the video at the defined intervals, extracting one frame at each step.
+    - Resizes each frame to 320x180 pixels to reduce computational load.
+    - Computes and normalizes the color histogram (RGB) in 3 dimensions, with 8 bins per channel.
+    - Compares the current frame's histogram with the previous one using correlation.
+    - If the similarity between histograms is below the threshold, it is considered a cut.
+    - Returns the average number of cuts per minute, rounded to two decimals.
 
-    Retorno:
-    - float: Promedio de cortes detectados por minuto en el video.
+    Returns:
+    - float: Average number of cuts detected per minute in the video.
     """
 
-    cambios = 0
-    anterior_hist = None
-    for t in np.arange(0, clip.duration, intervalo):
+    changes = 0
+    previous_hist = None
+    for t in np.arange(0, clip.duration, interval):
         frame = cv2.resize(clip.get_frame(t), (320, 180))
         hist = cv2.calcHist([frame], [0, 1, 2], None, [8,8,8], [0,256]*3)
         hist = cv2.normalize(hist, hist).flatten()
-        if anterior_hist is not None:
-            diferencia = cv2.compareHist(anterior_hist, hist, cv2.HISTCMP_CORREL)
-            if diferencia < umbral:
-                cambios += 1
-        anterior_hist = hist
-    return round(cambios / (clip.duration / 60), 2)
+        if previous_hist is not None:
+            difference = cv2.compareHist(previous_hist, hist, cv2.HISTCMP_CORREL)
+            if difference < threshold:
+                changes += 1
+        previous_hist = hist
+    return round(changes / (clip.duration / 60), 2)
 
-def analizar_audio(clip):
+def analyze_audio(clip):
     """
-    Analiza el nivel promedio de volumen de un clip de video a partir de su pista de audio.
+    Analyzes the average volume level of a video clip from its audio track.
 
-    Parámetros:
-    - clip: Objeto de video (por ejemplo, un VideoFileClip de MoviePy) que contiene una pista de audio.
+    Parameters:
+    - clip: Video object (for example, a MoviePy VideoFileClip) that contains an audio track.
 
-    Proceso:
-    - Extrae la pista de audio del clip y la guarda temporalmente en formato WAV.
-    - Carga el archivo de audio con una frecuencia de muestreo de 22050 Hz usando librosa.
-    - Calcula la energía de la señal (RMS) a lo largo del tiempo.
-    - Convierte los valores RMS a decibelios (dB), normalizados respecto al valor máximo.
-    - Calcula el promedio absoluto del volumen en decibelios.
+    Process:
+    - Extracts the clip's audio track and temporarily saves it in WAV format.
+    - Loads the audio file at a sampling rate of 22050 Hz using librosa.
+    - Computes the signal energy (RMS) over time.
+    - Converts the RMS values to decibels (dB), normalized against the maximum value.
+    - Computes the mean absolute volume in decibels.
 
-    Retorno:
-    - float: Nivel promedio de volumen en decibelios (dB), redondeado a dos decimales.
+    Returns:
+    - float: Average volume level in decibels (dB), rounded to two decimals.
     """
 
     with tempfile.NamedTemporaryFile(suffix=".wav") as audio_temp:
         clip.audio.write_audiofile(audio_temp.name, verbose=False, logger=None)
         y, _ = librosa.load(audio_temp.name, sr=22050)
         rms = librosa.feature.rms(y=y)[0]
-        volumen_db = librosa.amplitude_to_db(rms, ref=np.max)
-        return round(float(np.mean(np.abs(volumen_db))), 2)
+        volume_db = librosa.amplitude_to_db(rms, ref=np.max)
+        return round(float(np.mean(np.abs(volume_db))), 2)
 
-def calcular_complejidad_visual(clip, sample_frames=30):
+def compute_visual_complexity(clip, sample_frames=30):
     """
-    Calcula la complejidad visual promedio de un clip de video en función del número de contornos detectados en fotogramas representativos.
+    Computes the average visual complexity of a video clip based on the number of contours detected in representative frames.
 
-    Parámetros:
-    - clip: Objeto de video (por ejemplo, un VideoFileClip de MoviePy) del cual se extraerán los fotogramas.
-    - sample_frames (int): Número de fotogramas equidistantes que se analizarán a lo largo del video. Por defecto es 30.
+    Parameters:
+    - clip: Video object (for example, a MoviePy VideoFileClip) from which frames will be extracted.
+    - sample_frames (int): Number of equidistant frames analyzed throughout the video. Defaults to 30.
 
-    Proceso:
-    - Selecciona una serie de tiempos equidistantes a lo largo de la duración del clip.
-    - Para cada tiempo, extrae un fotograma y lo redimensiona a 320x180 píxeles.
-    - Convierte el fotograma a escala de grises y aplica un desenfoque gaussiano para reducir el ruido.
-    - Detecta bordes en el fotograma utilizando el algoritmo de Canny.
-    - Encuentra contornos en la imagen resultante.
-    - Cuenta el número de contornos como medida de complejidad visual y lo acumula.
+    Process:
+    - Selects a series of equidistant times throughout the clip's duration.
+    - For each time, extracts a frame and resizes it to 320x180 pixels.
+    - Converts the frame to grayscale and applies a Gaussian blur to reduce noise.
+    - Detects edges in the frame using the Canny algorithm.
+    - Finds contours in the resulting image.
+    - Counts the number of contours as a measure of visual complexity and accumulates it.
 
-    Retorno:
-    - float: Promedio de contornos detectados por fotograma, como indicador de la complejidad visual del video, redondeado a dos decimales.
+    Returns:
+    - float: Average number of contours detected per frame, as an indicator of the video's visual complexity, rounded to two decimals.
     """
 
-    complejidades = []
+    complexities = []
     for t in np.linspace(0, clip.duration, sample_frames):
         frame = cv2.resize(clip.get_frame(t), (320, 180))
         gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
         blurred = cv2.GaussianBlur(gray, (5, 5), 0)
         edges = cv2.Canny(blurred, 100, 200)
-        contornos, _ = cv2.findContours(edges, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
-        complejidades.append(len(contornos))
-    return round(float(np.mean(complejidades)), 2)
+        contours, _ = cv2.findContours(edges, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
+        complexities.append(len(contours))
+    return round(float(np.mean(complexities)), 2)
 
-def calcular_densidad_sonora(clip):
+def compute_sound_density(clip):
     """
-    Calcula la densidad sonora de un clip de video, entendida como la cantidad de eventos sonoros significativos por minuto.
+    Computes the sound density of a video clip, understood as the number of significant sound events per minute.
 
-    Parámetros:
-    - clip: Objeto de video (por ejemplo, un VideoFileClip de MoviePy) que contiene una pista de audio.
+    Parameters:
+    - clip: Video object (for example, a MoviePy VideoFileClip) that contains an audio track.
 
-    Proceso:
-    - Extrae la pista de audio del clip y la guarda temporalmente en formato WAV.
-    - Carga el archivo de audio con una frecuencia de muestreo de 22050 Hz usando librosa.
-    - Calcula la envolvente de energía para detectar la presencia de eventos sonoros.
-    - Detecta los picos de energía (onsets) en la señal de audio.
-    - Filtra los eventos para eliminar detecciones muy próximas entre sí, considerando un intervalo mínimo de 1 segundo entre eventos.
-    - Cuenta los eventos filtrados como indicadores de sonidos relevantes.
+    Process:
+    - Extracts the clip's audio track and temporarily saves it in WAV format.
+    - Loads the audio file at a sampling rate of 22050 Hz using librosa.
+    - Computes the energy envelope to detect the presence of sound events.
+    - Detects the energy peaks (onsets) in the audio signal.
+    - Filters the events to remove detections that are very close to each other, considering a minimum interval of 1 second between events.
+    - Counts the filtered events as indicators of relevant sounds.
 
-    Retorno:
-    - float: Densidad de eventos sonoros por minuto en el clip, redondeada a dos decimales.
+    Returns:
+    - float: Sound event density per minute in the clip, rounded to two decimals.
     """
 
     with tempfile.NamedTemporaryFile(suffix=".wav") as audio_temp:
         clip.audio.write_audiofile(audio_temp.name, verbose=False, logger=None)
         y, sr = librosa.load(audio_temp.name, sr=22050)
         onset_env = librosa.onset.onset_strength(y=y, sr=sr)
-        picos = librosa.onset.onset_detect(onset_envelope=onset_env, sr=sr, units='time', backtrack=True, delta=0.7, wait=2)
-        sonidos_filtrados = []
-        ultimo_sonido = -np.inf
-        intervalo_minimo = 1.0
-        for pico in picos:
-            if pico - ultimo_sonido >= intervalo_minimo:
-                sonidos_filtrados.append(pico)
-                ultimo_sonido = pico
-        duracion_min = clip.duration / 60
-        return round(len(sonidos_filtrados) / duracion_min, 2)
+        peaks = librosa.onset.onset_detect(onset_envelope=onset_env, sr=sr, units='time', backtrack=True, delta=0.7, wait=2)
+        filtered_sounds = []
+        last_sound = -np.inf
+        min_interval = 1.0
+        for peak in peaks:
+            if peak - last_sound >= min_interval:
+                filtered_sounds.append(peak)
+                last_sound = peak
+        duration_min = clip.duration / 60
+        return round(len(filtered_sounds) / duration_min, 2)
 
-def clasificar_intervalo(cortes, volumen, complejidad, densidad_sonora):
-    for rango, params in PARAMETROS_EDAD.items():
-        if (cortes <= params['cortes'] and volumen <= params['volumen'] and
-            complejidad <= params['complejidad_visual'] and densidad_sonora <= params['densidad_sonora']):
-            return rango
+def classify_interval(cuts, volume, complexity, sound_density):
+    for age_range, params in AGE_PARAMETERS.items():
+        if (cuts <= params['cuts'] and volume <= params['volume'] and
+            complexity <= params['visual_complexity'] and sound_density <= params['sound_density']):
+            return age_range
     return "13+"
 
-def generar_informe(analisis_intervalos):
-    conteo = {"0-3": 0, "4-6": 0, "7-12": 0, "13+": 0}
+def generate_report(interval_analysis):
+    counts = {"0-3": 0, "4-6": 0, "7-12": 0, "13+": 0}
 
-    for intervalo in analisis_intervalos:
-        conteo[intervalo['edad']] += 1
+    for interval in interval_analysis:
+        counts[interval['age']] += 1
 
-    edad_final = max(conteo, key=conteo.get)
-    texto = f"Edad recomendada general: {edad_final}\n\n"
+    final_age = max(counts, key=counts.get)
+    text = f"Overall recommended age: {final_age}\n\n"
 
-    return edad_final, texto, analisis_intervalos
+    return final_age, text, interval_analysis
 
-def analizar_video(ruta_video, duracion_intervalo=60):
-    clip = mp.VideoFileClip(ruta_video)
-    resultados_intervalos = []
-    intervalos = np.arange(0, clip.duration, duracion_intervalo)
-    total = len(intervalos)
-    progreso = st.progress(0)
+def analyze_video(video_path, interval_duration=60):
+    clip = mp.VideoFileClip(video_path)
+    interval_results = []
+    intervals = np.arange(0, clip.duration, interval_duration)
+    total = len(intervals)
+    progress = st.progress(0)
 
-    for idx, inicio in enumerate(intervalos):
-        fin = min(inicio + duracion_intervalo, clip.duration)
-        subclip = clip.subclip(inicio, fin)
+    for idx, start in enumerate(intervals):
+        end = min(start + interval_duration, clip.duration)
+        subclip = clip.subclip(start, end)
 
-        progreso.progress(10, "Detectando cortes visuales...")
-        cortes = detectar_cortes(subclip)
-        progreso.progress(40, "Analizando volumen de audio...")
-        volumen = analizar_audio(subclip)
-        progreso.progress(60, "Calculando complejidad visual...")
-        complejidad = calcular_complejidad_visual(subclip)
-        progreso.progress(80, "Calculando densidad sonora...")
-        densidad = calcular_densidad_sonora(subclip)
+        progress.progress(10, "Detecting visual cuts...")
+        cuts = detect_cuts(subclip)
+        progress.progress(40, "Analyzing audio volume...")
+        volume = analyze_audio(subclip)
+        progress.progress(60, "Computing visual complexity...")
+        complexity = compute_visual_complexity(subclip)
+        progress.progress(80, "Computing sound density...")
+        density = compute_sound_density(subclip)
 
-        edad = clasificar_intervalo(cortes, volumen, complejidad, densidad)
+        age = classify_interval(cuts, volume, complexity, density)
 
-        resultados_intervalos.append({
-            'inicio': inicio,
-            'fin': fin,
-            'cortes': cortes,
-            'volumen': volumen,
-            'complejidad': complejidad,
-            'densidad_sonora': densidad,
-            'edad': edad
+        interval_results.append({
+            'start': start,
+            'end': end,
+            'cuts': cuts,
+            'volume': volume,
+            'complexity': complexity,
+            'sound_density': density,
+            'age': age
         })
 
-        progreso.progress((idx + 1) / total, f"Analizando intervalos ({idx+1}/{total})...")
+        progress.progress((idx + 1) / total, f"Analyzing intervals ({idx+1}/{total})...")
 
-    progreso.empty()
-    return generar_informe(resultados_intervalos)
+    progress.empty()
+    return generate_report(interval_results)
 
-def mostrar_grafico(intervalos):
-    df = pd.DataFrame(intervalos)
+def plot_chart(intervals):
+    df = pd.DataFrame(intervals)
     fig, ax = plt.subplots(figsize=(6, 4))
-    x = [f"{int(i['inicio'])}-{int(i['fin'])}" for i in intervalos]
-    ax.plot(x, df['cortes'], label="Cortes visuales/min", marker='o')
-    ax.plot(x, df['complejidad'], label="Complejidad visual", marker='o')
-    ax.plot(x, df['volumen'], label="Volumen promedio (dB)", marker='o')
-    ax.plot(x, df['densidad_sonora'], label="Densidad sonora", marker='o')
-    ax.set_xlabel("Intervalos (s)")
-    ax.set_ylabel("Valor")
-    ax.set_title("Evolución de indicadores")
+    x = [f"{int(i['start'])}-{int(i['end'])}" for i in intervals]
+    ax.plot(x, df['cuts'], label="Visual cuts/min", marker='o')
+    ax.plot(x, df['complexity'], label="Visual complexity", marker='o')
+    ax.plot(x, df['volume'], label="Average volume (dB)", marker='o')
+    ax.plot(x, df['sound_density'], label="Sound density", marker='o')
+    ax.set_xlabel("Intervals (s)")
+    ax.set_ylabel("Value")
+    ax.set_title("Indicator trend")
     ax.legend()
     plt.xticks(rotation=45)
     plt.tight_layout()
     st.pyplot(fig)
 
-def mostrar_resumen(intervalos):
-    df = pd.DataFrame(intervalos)
+def show_summary(intervals):
+    df = pd.DataFrame(intervals)
 
-    st.markdown("### 📌 Resumen visual de métricas")
+    st.markdown("### 📌 Visual summary of metrics")
 
-    metricas = [
-        ("Cortes visuales/min (máx)", df['cortes'].max(), "#20D86A"),
-        ("Complejidad visual (máx)", df['complejidad'].max(), "#6a4c93"),
-        ("Volumen promedio (dB)", df['volumen'].max(), "#f39c12"),
-        ("Densidad sonora (máx)", df['densidad_sonora'].max(), "#e74c3c")
+    metrics = [
+        ("Visual cuts/min (max)", df['cuts'].max(), "#20D86A"),
+        ("Visual complexity (max)", df['complexity'].max(), "#6a4c93"),
+        ("Average volume (dB)", df['volume'].max(), "#f39c12"),
+        ("Sound density (max)", df['sound_density'].max(), "#e74c3c")
     ]
 
     col1, col2 = st.columns(2)
-    for i, (titulo, valor, color) in enumerate(metricas):
+    for i, (title, value, color) in enumerate(metrics):
         target_col = col1 if i % 2 == 0 else col2
         with target_col:
             st.markdown(f"""
@@ -235,7 +235,7 @@ def mostrar_resumen(intervalos):
                     text-align: center;
                     box-shadow: 0 4px 8px rgba(0,0,0,0.15);
                 ">
-                    <div style="font-size: 0.9em;">{titulo}</div>
-                    <div style="font-size: 2em; font-weight: bold;">{valor}</div>
+                    <div style="font-size: 0.9em;">{title}</div>
+                    <div style="font-size: 2em; font-weight: bold;">{value}</div>
                 </div>
             """, unsafe_allow_html=True)

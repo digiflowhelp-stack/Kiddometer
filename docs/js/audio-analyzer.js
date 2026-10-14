@@ -5,11 +5,11 @@
 //
 // Absolute dB SPL cannot be known from a file (it depends on the playback
 // device and volume), so loudness is scored RELATIVE to the programme's own
-// integrated loudness: sudden jumps ("sustos") are what startles a child.
+// integrated loudness: sudden jumps ("jumpscares") are what startles a child.
 //
 // Per 60 s interval it produces:
-// - picosVolumen ...... max short-term loudness minus integrated loudness (dB)
-// - densidadSonora .... salient sound onsets per minute (energy-flux peaks)
+// - volumePeaks ...... max short-term loudness minus integrated loudness (dB)
+// - soundDensity .... salient sound onsets per minute (energy-flux peaks)
 
 const SR = 22050;
 const ST_WINDOW = 0.4; // s, short-term loudness window
@@ -155,8 +155,8 @@ export async function analyzeAudioFile(file, { intervalSec = 60, onProgress = ()
     intervals.push({
       start,
       end,
-      picosVolumen: +Math.max(0, maxSt - integrated).toFixed(2),
-      densidadSonora: +(onsetsIn / minutes).toFixed(2),
+      volumePeaks: +Math.max(0, maxSt - integrated).toFixed(2),
+      soundDensity: +(onsetsIn / minutes).toFixed(2),
     });
   }
 

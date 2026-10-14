@@ -1,5 +1,5 @@
 ---
-title: EdadPlay Backend
+title: Kiddometer Backend
 emoji: 🎬
 colorFrom: purple
 colorTo: pink
@@ -8,25 +8,25 @@ app_port: 7860
 pinned: false
 ---
 
-# EdadPlay — backend de descarga
+# Kiddometer — download backend
 
-Servidor opcional para la pestaña «YouTube» de [EdadPlay](https://github.com/episuarez/edadPlay):
-descarga el vídeo (≤480p) con yt-dlp y lo transmite al navegador, donde se
-analiza en local. No almacena nada.
+Optional server for the "YouTube" tab of [Kiddometer](https://github.com/digiflowhelp-stack/Kiddometer):
+it downloads the video (≤480p) with yt-dlp and streams it to the browser, where
+it is analyzed locally. It stores nothing.
 
 Endpoints:
 
-- `GET /api/health` — estado, versión de yt-dlp, POT provider y cookies.
-- `GET /api/fetch?url=…` — stream del vídeo con cabeceras CORS.
+- `GET /api/health` — status, yt-dlp version, POT provider and cookies.
+- `GET /api/fetch?url=…` — video stream with CORS headers.
 
-Variables (Settings del Space):
+Variables (Space Settings):
 
-- `ALLOWED_ORIGINS` — restringe CORS, p. ej. `https://tuusuario.github.io`.
-- `MAX_DURATION_SECONDS` — duración máxima (def. 3600).
-- `COOKIES_B64` (secret) — `cookies.txt` en base64 de una cuenta desechable,
-  como capa extra anti-bloqueo de YouTube.
+- `ALLOWED_ORIGINS` — restricts CORS, e.g. `https://youruser.github.io`.
+- `MAX_DURATION_SECONDS` — maximum duration (default 3600).
+- `COOKIES_B64` (secret) — `cookies.txt` in base64 from a throwaway account,
+  as an extra anti-blocking layer for YouTube.
 
-Anti-bloqueo incluido: PO Token provider (bgutil) en el propio contenedor,
-cadena de clientes de respaldo de yt-dlp y autoactualización cada 12 h.
+Anti-blocking included: PO Token provider (bgutil) in the container itself,
+yt-dlp's client fallback chain and self-updates every 12 h.
 
-Despliegue paso a paso: ver `DEPLOY_HF.md` en el repositorio principal.
+Step-by-step deployment: see `DEPLOY_HF.md` in the main repository.

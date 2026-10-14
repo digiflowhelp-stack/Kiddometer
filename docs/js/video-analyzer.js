@@ -10,9 +10,9 @@
 //    so `flashes` is reported as null ("not evaluated") in that mode.
 //
 // Per 60 s interval it produces:
-// - cortes/min ........ shot cuts via luminance-histogram correlation drop
-// - movimiento ........ mean inter-frame luminance change inside shots (0-100)
-// - complejidad ....... Sobel edge density (0-100)
+// - cuts/min ........ shot cuts via luminance-histogram correlation drop
+// - motion ........ mean inter-frame luminance change inside shots (0-100)
+// - complexity ....... Sobel edge density (0-100)
 // - flashes ........... max flashes/s per WCAG 2.3.1 (simplified, 3x3 zones)
 
 const W = 160;
@@ -205,9 +205,9 @@ class FrameCollector {
       return {
         start: slot.start,
         end: slot.end,
-        cortes: +(slot.cuts / minutes).toFixed(2),
-        movimiento: slot.motionN ? +(slot.motionSum / slot.motionN).toFixed(2) : 0,
-        complejidad: slot.complexityN ? +(slot.complexitySum / slot.complexityN).toFixed(2) : 0,
+        cuts: +(slot.cuts / minutes).toFixed(2),
+        motion: slot.motionN ? +(slot.motionSum / slot.motionN).toFixed(2) : 0,
+        complexity: slot.complexityN ? +(slot.complexitySum / slot.complexityN).toFixed(2) : 0,
         flashes: this.flashEnabled
           ? +maxFlashesPerSecond(zoneTransitions, slot.start, slot.end).toFixed(2)
           : null,
@@ -232,7 +232,7 @@ function makeVideoElement(url) {
 async function waitMetadata(video) {
   await new Promise((resolve, reject) => {
     video.onloadedmetadata = resolve;
-    video.onerror = () => reject(new Error('El navegador no puede decodificar este formato de vídeo.'));
+    video.onerror = () => reject(new Error('The browser cannot decode this video format.'));
   });
 }
 
@@ -248,7 +248,7 @@ async function playbackPass(video, ctx, collector, duration, onProgress) {
 
   try {
     await new Promise((resolve, reject) => {
-    video.onerror = () => reject(new Error('Error de decodificación durante el análisis.'));
+    video.onerror = () => reject(new Error('Decoding error during analysis.'));
     video.onended = resolve;
 
     if ('requestVideoFrameCallback' in HTMLVideoElement.prototype) {
@@ -289,7 +289,7 @@ async function seekPass(video, ctx, collector, duration, onProgress) {
     const target = Math.min(t, Math.max(0, duration - 0.05));
     await new Promise((resolve, reject) => {
       video.onseeked = resolve;
-      video.onerror = () => reject(new Error('Error de decodificación durante el análisis.'));
+      video.onerror = () => reject(new Error('Decoding error during analysis.'));
       video.currentTime = target;
     });
     collector.process(ctx, video, target);
@@ -305,7 +305,7 @@ export async function analyzeVideoFile(file, { intervalSec = 60, onProgress = ()
     await waitMetadata(video);
     const duration = video.duration;
     if (!Number.isFinite(duration) || duration <= 0) {
-      throw new Error('No se pudo determinar la duración del vídeo.');
+      throw new Error('Could not determine the video duration.');
     }
 
     const canvas = document.createElement('canvas');

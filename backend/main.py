@@ -1,4 +1,4 @@
-"""Optional download helper for EdadPlay.
+"""Optional download helper for Kiddometer.
 
 Streams a video from YouTube/Vimeo/TikTok/etc. (<=480p) to the browser with
 CORS headers so the client-side analyzer can process it locally. Nothing is
@@ -49,7 +49,7 @@ FORMAT_MERGE = ("bv*[height<=480][ext=mp4]+ba[ext=m4a]/"
                 "bv*[height<=480]+ba/bv*+ba/b")
 
 semaphore = asyncio.Semaphore(MAX_CONCURRENT)
-app = FastAPI(title="EdadPlay fetch helper")
+app = FastAPI(title="Kiddometer fetch helper")
 app.add_middleware(
     CORSMiddleware,
     allow_origins=ALLOWED_ORIGINS,
@@ -119,23 +119,23 @@ ATTEMPT_EXTRA_ARGS = [
 def classify_error(stderr: str) -> HTTPException:
     s = stderr.lower()
     if "confirm you" in s and "bot" in s or "sign in to confirm" in s:
-        return HTTPException(503, "La plataforma está bloqueando temporalmente las descargas desde este "
-                                  "servidor. Prueba de nuevo en unos minutos o descarga el vídeo y usa «Archivo local».")
+        return HTTPException(503, "The platform is temporarily blocking downloads from this "
+                                  "server. Try again in a few minutes or download the video and use \"Local file\".")
     if "private video" in s or "login required" in s or "members-only" in s or "sign in" in s:
-        return HTTPException(403, "El vídeo es privado o requiere iniciar sesión en la plataforma.")
+        return HTTPException(403, "The video is private or requires signing in to the platform.")
     if "not available in your country" in s or "geo restricted" in s or "blocked it in your country" in s:
-        return HTTPException(451, "El vídeo no está disponible en la región del servidor (restricción geográfica).")
+        return HTTPException(451, "The video is not available in the server region (geographic restriction).")
     if "unsupported url" in s:
-        return HTTPException(400, "Esa web no está soportada. Funciona con YouTube, Vimeo, Dailymotion, "
-                                  "TikTok, Twitch y cientos de sitios más.")
+        return HTTPException(400, "That site is not supported. It works with YouTube, Vimeo, Dailymotion, "
+                                  "TikTok, Twitch and hundreds of other sites.")
     if "video unavailable" in s or "404" in s:
-        return HTTPException(404, "El vídeo no existe o ha sido retirado.")
+        return HTTPException(404, "The video does not exist or has been removed.")
     if "unexpected_eof" in s or "ssl" in s or "connection reset" in s or "timed out" in s:
-        return HTTPException(503, "La plataforma está cortando las conexiones de este servidor. "
-                                  "Prueba de nuevo en unos minutos o descarga el vídeo y usa «Archivo local».")
+        return HTTPException(503, "The platform is cutting off this server's connections. "
+                                  "Try again in a few minutes or download the video and use \"Local file\".")
     if "match-filter" in s or not s.strip():
-        return HTTPException(413, f"El vídeo supera la duración máxima permitida ({MAX_DURATION // 60} min).")
-    return HTTPException(502, f"No se pudo obtener el vídeo: {stderr[-300:]}")
+        return HTTPException(413, f"The video exceeds the maximum allowed duration ({MAX_DURATION // 60} min).")
+    return HTTPException(502, f"Could not fetch the video: {stderr[-300:]}")
 
 
 async def _cmd_version(*cmd: str) -> str:
@@ -175,7 +175,7 @@ async def fetch_merged(url: str, extra: list[str]) -> FileResponse | str:
     so this downloads to a temp dir, streams the file and deletes it after.
     Returns the stderr text on failure so the caller can classify it.
     """
-    tmpdir = tempfile.mkdtemp(prefix="edadplay-")
+    tmpdir = tempfile.mkdtemp(prefix="kiddometer-")
     proc = await asyncio.create_subprocess_exec(
         *base_args(FORMAT_MERGE, os.path.join(tmpdir, "video.%(ext)s")),
         "--merge-output-format", "mp4", *extra, url,
@@ -209,7 +209,7 @@ async def fetch_merged(url: str, extra: list[str]) -> FileResponse | str:
 async def debug(url: str = Query(..., max_length=500)):
     """Verbose yt-dlp run for diagnosing extraction issues (read-only)."""
     if not url.startswith(("http://", "https://")):
-        raise HTTPException(400, "URL no válida")
+        raise HTTPException(400, "Invalid URL")
     args = [
         "yt-dlp", "-v", "--list-formats", "--no-playlist", "--force-ipv4",
         "--js-runtimes", "deno", "--impersonate", "chrome",
@@ -230,9 +230,9 @@ async def debug(url: str = Query(..., max_length=500)):
 @app.get("/api/fetch")
 async def fetch(url: str = Query(..., max_length=500)):
     if not url.startswith(("http://", "https://")):
-        raise HTTPException(400, "URL no válida")
+        raise HTTPException(400, "Invalid URL")
     if shutil.which("yt-dlp") is None:
-        raise HTTPException(500, "yt-dlp no disponible en el servidor")
+        raise HTTPException(500, "yt-dlp is not available on the server")
 
     async with semaphore:
         last_error: HTTPException | None = None
@@ -272,4 +272,4 @@ async def fetch(url: str = Query(..., max_length=500)):
             if last_error.status_code not in (502, 503):
                 break
 
-        raise last_error or HTTPException(502, "Fallo desconocido")
+        raise last_error or HTTPException(502, "Unknown failure")

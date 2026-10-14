@@ -17,15 +17,15 @@ const BAND_VAR = ['var(--age-0-3)', 'var(--age-4-6)', 'var(--age-7-12)', 'var(--
 const BAND_LABELS = ['0–3', '4–6', '7–12', '13+'];
 
 const METRIC_ICONS = {
-  cortes: 'scissors',
-  movimiento: 'move',
-  complejidad: 'scan-eye',
+  cuts: 'scissors',
+  motion: 'move',
+  complexity: 'scan-eye',
   flashes: 'zap',
-  picosVolumen: 'volume-2',
-  densidadSonora: 'audio-waveform',
+  volumePeaks: 'volume-2',
+  soundDensity: 'audio-waveform',
 };
 
-let mode = 'basico';
+let mode = 'basic';
 let activeTab = 'file';
 let lastReport = null;
 
@@ -40,24 +40,24 @@ function agePillHTML(bandIndex, label, small = false) {
 /* ================= Static home content ================= */
 
 const AGE_CARD_DATA = [
-  { band: 0, label: '0–3 años', big: 'Evitar', caption: 'Mejor sin pantallas' },
-  { band: 1, label: '4–6 años', big: '≤ 1 h', caption: 'Supervisada por un adulto' },
-  { band: 2, label: '7–12 años', big: '1–2 h', caption: 'Con pausas y acompañamiento' },
-  { band: 3, label: '13+ años', big: 'Equilibrado', caption: 'Autonomía con criterio' },
+  { band: 0, label: '0–3 years', big: 'Avoid', caption: 'Better with no screens' },
+  { band: 1, label: '4–6 years', big: '≤ 1 h', caption: 'Supervised by an adult' },
+  { band: 2, label: '7–12 years', big: '1–2 h', caption: 'With breaks and company' },
+  { band: 3, label: '13+ years', big: 'Balanced', caption: 'Autonomy with judgement' },
 ];
 
 function thresholdRows(bandIdx) {
   const rows = [
-    ['Cortes / min', 'cortes', ''],
-    ['Destellos / s', 'flashes', ''],
-    ['Picos de volumen', 'picosVolumen', ' dB'],
-    ['Eventos sonoros / min', 'densidadSonora', ''],
+    ['Cuts / min', 'cuts', ''],
+    ['Flashes / s', 'flashes', ''],
+    ['Volume peaks', 'volumePeaks', ' dB'],
+    ['Sound events / min', 'soundDensity', ''],
   ];
   return rows.map(([label, key, suffix]) => {
     const t = METRICS[key].thresholds;
     let value;
-    if (bandIdx < 3) value = `≤ ${String(t[bandIdx]).replace('.', ',')}${suffix}`;
-    else value = key === 'flashes' ? '> 3 · aviso' : `> ${t[2]}${suffix}`;
+    if (bandIdx < 3) value = `≤ ${String(t[bandIdx])}${suffix}`;
+    else value = key === 'flashes' ? '> 3 · warning' : `> ${t[2]}${suffix}`;
     return `<div class="threshold-row"><span class="label">${label}</span><span class="value">${value}</span></div>`;
   }).join('');
 }
@@ -76,34 +76,34 @@ function renderAgeCards() {
 
 const METH_CARDS = [
   {
-    icon: 'scissors', title: 'Cortes visuales',
-    friendly: 'Cuántas veces cambia el plano por minuto. Un ritmo demasiado rápido agota la atención de los más pequeños.',
-    base: 'Lillard & Peterson (2011): ~5,5 cortes/min redujeron la función ejecutiva en niños de 4 años; ~1–2 cortes/min no. Confirmado por metaanálisis de 2025 (Hinten et al.).',
+    icon: 'scissors', title: 'Visual cuts',
+    friendly: 'How many times the shot changes per minute. A pace that is too fast exhausts the attention of the youngest children.',
+    base: 'Lillard & Peterson (2011): ~5.5 cuts/min impaired executive function in 4-year-olds; ~1–2 cuts/min did not. Confirmed by a 2025 meta-analysis (Hinten et al.).',
   },
   {
-    icon: 'zap', title: 'Destellos',
-    friendly: 'Cambios bruscos de luz que pueden resultar molestos o, en casos extremos, peligrosos.',
-    base: 'WCAG 2.3.1 simplificada: más de 3 destellos/s puede provocar crisis en personas con epilepsia fotosensible. Si se supera, EdadPlay siempre avisa.',
+    icon: 'zap', title: 'Flashes',
+    friendly: 'Abrupt changes in light that can be unpleasant or, in extreme cases, dangerous.',
+    base: 'Simplified WCAG 2.3.1: more than 3 flashes/s can trigger seizures in people with photosensitive epilepsy. If it is exceeded, Kiddometer always warns.',
   },
   {
-    icon: 'volume-2', title: 'Picos de volumen',
-    friendly: 'Sustos y golpes de efecto: subidas de sonido muy por encima de la media del propio vídeo.',
-    base: 'Sonoridad con filtro K de ITU-R BT.1770 (estándar de TV, base de EBU R128) en ventanas de 400 ms. La OMS sitúa la escucha segura infantil por debajo de 75 dB.',
+    icon: 'volume-2', title: 'Volume peaks',
+    friendly: 'Jumpscares and sound stings: loudness spikes far above the video\'s own average.',
+    base: 'ITU-R BT.1770 K-weighted loudness (the TV standard behind EBU R128) in 400 ms windows. The WHO sets safe listening for children below 75 dB.',
   },
   {
-    icon: 'audio-waveform', title: 'Densidad sonora',
-    friendly: 'Cuántos sonidos llamativos por minuto bombardean el oído: efectos, golpes, exclamaciones.',
-    base: 'Christakis et al. (PNAS 2018): la estimulación audiovisual excesiva en edades tempranas se vincula con problemas posteriores de atención.',
+    icon: 'audio-waveform', title: 'Sound density',
+    friendly: 'How many striking sounds per minute bombard the ear: effects, stings, exclamations.',
+    base: 'Christakis et al. (PNAS 2018): excessive audiovisual stimulation at early ages is linked to later attention problems.',
   },
   {
-    icon: 'move', title: 'Movimiento en pantalla',
-    friendly: 'Cuánto se mueve la imagen dentro de un mismo plano: una charla tranquila no es una persecución.',
-    base: 'Cambio medio de luminancia entre fotogramas del mismo plano. Umbral heurístico.',
+    icon: 'move', title: 'On-screen motion',
+    friendly: 'How much the image moves within a single shot: a calm talk is not a chase scene.',
+    base: 'Mean luminance change between frames of the same shot. Heuristic threshold.',
   },
   {
-    icon: 'scan-eye', title: 'Complejidad visual',
-    friendly: 'Cuántos elementos compiten a la vez por la atención en pantalla.',
-    base: 'Densidad de bordes (operador Sobel) por fotograma. Umbral heurístico.',
+    icon: 'scan-eye', title: 'Visual complexity',
+    friendly: 'How many elements compete at once for attention on screen.',
+    base: 'Edge density (Sobel operator) per frame. Heuristic threshold.',
   },
 ];
 
@@ -116,7 +116,7 @@ function renderMethCards() {
       </div>
       <p class="meth-friendly">${c.friendly}</p>
       <div class="base-wrap">
-        <span class="base-label">BASE CIENTÍFICA</span>
+        <span class="base-label">SCIENTIFIC BASIS</span>
         <p class="base-text">${c.base}</p>
       </div>
     </div>`).join('');
@@ -127,9 +127,9 @@ const REFERENCES = [
   ['Hinten et al. (2025)', "Meta-Analytic Review of Media Exposure on Children's Attention and Executive Functions. Developmental Science.", 'https://onlinelibrary.wiley.com/doi/10.1111/desc.70069'],
   ['Christakis et al. (2018)', 'How early media exposure may affect cognitive function. PNAS.', 'https://www.pnas.org/doi/10.1073/pnas.1711548115'],
   ['W3C — WCAG 2.1, SC 2.3.1', 'Three Flashes or Below Threshold.', 'https://www.w3.org/WAI/WCAG22/Understanding/three-flashes-or-below-threshold.html'],
-  ['ITU-R BT.1770 / EBU R128', 'Medición de sonoridad de programas.', 'https://tech.ebu.ch/docs/r/r128.pdf'],
+  ['ITU-R BT.1770 / EBU R128', 'Programme loudness measurement.', 'https://tech.ebu.ch/docs/r/r128.pdf'],
   ['OMS (2019)', 'Guidelines on physical activity, sedentary behaviour and sleep for children under 5.', 'https://apps.who.int/iris/handle/10665/311664'],
-  ['OMS — Make Listening Safe', 'Escucha segura infantil: < 75 dB.', 'https://cdn.who.int/media/docs/default-source/documents/health-topics/deafness-and-hearing-loss/monograph-on-noise-exposure-limit-for-children-in-recreational-settings.pdf'],
+  ['OMS — Make Listening Safe', 'Safe listening for children: < 75 dB.', 'https://cdn.who.int/media/docs/default-source/documents/health-topics/deafness-and-hearing-loss/monograph-on-noise-exposure-limit-for-children-in-recreational-settings.pdf'],
   ['AAP (2016)', 'Media and Young Minds. Pediatrics.', 'https://publications.aap.org/pediatrics/article/138/5/e20162591/60321/Media-and-Young-Minds'],
 ];
 
@@ -163,8 +163,8 @@ function setTab(tab) {
   $('#panel-url').hidden = tab !== 'url';
   $('#panel-youtube').hidden = tab !== 'youtube';
   if (tab === 'youtube' && !BACKEND_URL) {
-    $('#youtube-hint').textContent = 'Sin servidor de descarga configurado: YouTube no permite acceder al vídeo desde otra web. '
-      + 'Descarga el vídeo en tu dispositivo y usa «Archivo local» — el análisis es idéntico.';
+    $('#youtube-hint').textContent = 'No download server configured: YouTube does not allow accessing the video from another site. '
+      + 'Download the video to your device and use "Local file" — the analysis is identical.';
   }
 }
 
@@ -175,7 +175,7 @@ function setMode(m) {
 }
 
 function applyMode() {
-  const expert = mode === 'experto';
+  const expert = mode === 'expert';
   $$('.expert-only').forEach((el) => { el.hidden = !expert; });
   $('#basic-tips-section').hidden = expert;
 }
@@ -184,7 +184,7 @@ function setProgress(videoP, audioP, label) {
   const p = Math.round((videoP * 0.8 + audioP * 0.2) * 100);
   $('#progress-bar').classList.remove('indeterminate');
   $('#progress-bar').style.width = `${p}%`;
-  $('#progress-label').textContent = label || `Analizando… ${p}%`;
+  $('#progress-label').textContent = label || `Analyzing… ${p}%`;
 }
 
 // Animated bar for phases without a known total (server fetch, download).
@@ -212,7 +212,7 @@ function stopProgress() {
 let pendingFile = null;
 
 async function analyze(file) {
-  startProgress('Preparando análisis…');
+  startProgress('Preparing analysis…');
   const t0 = performance.now();
   let videoP = 0;
   let audioP = 0;
@@ -230,12 +230,12 @@ async function analyze(file) {
     const intervals = videoResult.intervals.map((vi, i) => {
       const ai = audioResult?.intervals[i];
       const metrics = {
-        cortes: vi.cortes,
-        movimiento: vi.movimiento,
-        complejidad: vi.complejidad,
+        cuts: vi.cuts,
+        motion: vi.motion,
+        complexity: vi.complexity,
         flashes: vi.flashes,
-        picosVolumen: ai ? ai.picosVolumen : null,
-        densidadSonora: ai ? ai.densidadSonora : null,
+        volumePeaks: ai ? ai.volumePeaks : null,
+        soundDensity: ai ? ai.soundDensity : null,
       };
       return { start: vi.start, end: vi.end, metrics, rating: classifyInterval(metrics) };
     });
@@ -253,11 +253,11 @@ async function analyze(file) {
     };
     renderResults(result);
     // Automation hook: batch tooling (Playwright) polls this global.
-    window.__edadplayResult = result;
-    document.dispatchEvent(new CustomEvent('edadplay:done'));
+    window.__kiddometerResult = result;
+    document.dispatchEvent(new CustomEvent('kiddometer:done'));
   } catch (e) {
-    showError(e.message || 'Error inesperado durante el análisis.');
-    window.__edadplayError = e.message || 'unknown';
+    showError(e.message || 'Unexpected error during analysis.');
+    window.__kiddometerError = e.message || 'unknown';
   } finally {
     wakeLock?.release().catch(() => {});
     stopProgress();
@@ -272,7 +272,7 @@ async function fetchAsFile(fetchUrl, displayName, label) {
   if (!resp.ok) {
     let detail = '';
     try { detail = (await resp.json()).detail || ''; } catch { /* not JSON */ }
-    throw new Error(detail || `El servidor respondió ${resp.status}.`);
+    throw new Error(detail || `The server responded ${resp.status}.`);
   }
 
   const total = Number(resp.headers.get('Content-Length')) || 0;
@@ -284,14 +284,14 @@ async function fetchAsFile(fetchUrl, displayName, label) {
     if (done) break;
     chunks.push(value);
     received += value.length;
-    const mb = (received / 1048576).toFixed(1).replace('.', ',');
+    const mb = (received / 1048576).toFixed(1);
     if (total) {
       const pct = Math.min(100, Math.round((received / total) * 100));
       $('#progress-bar').classList.remove('indeterminate');
       $('#progress-bar').style.width = `${pct}%`;
-      $('#progress-label').textContent = `Descargando vídeo… ${mb} MB (${pct}%)`;
+      $('#progress-label').textContent = `Downloading video… ${mb} MB (${pct}%)`;
     } else {
-      setBusyProgress(`Descargando vídeo… ${mb} MB`);
+      setBusyProgress(`Downloading video… ${mb} MB`);
     }
   }
 
@@ -305,7 +305,7 @@ async function analyzeDirectUrl(rawUrl) {
   try {
     url = new URL(rawUrl);
   } catch {
-    showError('La URL no es válida.');
+    showError('The URL is not valid.');
     return;
   }
   if (STREAMING_HOSTS.test(url.hostname)) {
@@ -315,33 +315,33 @@ async function analyzeDirectUrl(rawUrl) {
     return;
   }
   try {
-    const file = await fetchAsFile(url, decodeURIComponent(url.pathname.split('/').pop() || 'video'), 'Descargando vídeo…');
+    const file = await fetchAsFile(url, decodeURIComponent(url.pathname.split('/').pop() || 'video'), 'Downloading video…');
     await analyze(file);
   } catch (e) {
     stopProgress();
-    showError('No se pudo descargar la URL. El origen debe permitir CORS y apuntar a un archivo de vídeo. '
-      + `Alternativa: descarga el vídeo y usa «Archivo local». Detalle: ${e.message}`);
+    showError('Could not download the URL. The origin must allow CORS and point to a video file. '
+      + `Alternative: download the video and use "Local file". Detail: ${e.message}`);
   }
 }
 
 async function analyzeYoutube(rawUrl) {
   clearError();
-  if (!rawUrl) { showError('Pega un enlace de YouTube o Vimeo.'); return; }
+  if (!rawUrl) { showError('Paste a YouTube or Vimeo link.'); return; }
   if (!BACKEND_URL) {
-    showError('Esta instalación no tiene servidor de descarga configurado. YouTube no permite acceder al vídeo '
-      + 'desde otra web: descarga el vídeo en tu dispositivo y usa «Archivo local».');
+    showError('This installation has no download server configured. YouTube does not allow accessing the video '
+      + 'from another site: download the video to your device and use "Local file".');
     return;
   }
   try {
     const file = await fetchAsFile(
       `${BACKEND_URL.replace(/\/$/, '')}/api/fetch?url=${encodeURIComponent(rawUrl)}`,
       'video_online.mp4',
-      'Conectando con la plataforma… el servidor está preparando el vídeo, puede tardar 1-2 minutos. No cierres esta pestaña.',
+      'Connecting to the platform… the server is preparing the video, it may take 1-2 minutes. Do not close this tab.',
     );
     await analyze(file);
   } catch (e) {
     stopProgress();
-    showError(`${e.message} Alternativa que siempre funciona: descarga el vídeo y usa «Archivo local».`);
+    showError(`${e.message} An alternative that always works: download the video and use "Local file".`);
   }
 }
 
@@ -352,7 +352,7 @@ function runAnalysis() {
   } else if (activeTab === 'url') {
     const v = $('#url-input').value.trim();
     if (v) analyzeDirectUrl(v);
-    else showError('Pega la URL directa de un archivo de vídeo.');
+    else showError('Paste the direct URL of a video file.');
   } else {
     analyzeYoutube($('#youtube-input').value.trim());
   }
@@ -367,7 +367,7 @@ function renderResults(data) {
   const flashRange = overall.flashViolation ? flashViolationRange(intervals) : null;
 
   $('#r-file').textContent = `${fileName} · ${formatTime(duration)}`;
-  $('#r-done').textContent = `Analizado en ${formatTime(elapsed)} · 100 % local`;
+  $('#r-done').textContent = `Analyzed in ${formatTime(elapsed)} · 100% local`;
 
   const circle = $('#r-age-circle');
   circle.textContent = BAND_LABELS[overallIndex];
@@ -378,8 +378,8 @@ function renderResults(data) {
   $('#r-verdict-title').textContent = verdictTitle(overallIndex);
 
   let summary = verdictSummary(drivers, overallIndex);
-  if (degraded) summary += ' (Modo de compatibilidad: destellos no evaluados.)';
-  if (!hasAudio) summary += ' (Sin pista de audio analizable.)';
+  if (degraded) summary += ' (Compatibility mode: flashes not evaluated.)';
+  if (!hasAudio) summary += ' (No analyzable audio track.)';
   $('#r-verdict-summary').textContent = summary;
 
   const warningTile = $('#r-warning');
@@ -407,7 +407,7 @@ function renderResults(data) {
   $('#r-tips-basic').innerHTML = tipHTML;
 
   lastReport = data;
-  window.__edadplayReport = data;
+  window.__kiddometerReport = data;
   $('#view-home').hidden = true;
   $('#view-results').hidden = false;
   applyMode();
@@ -436,7 +436,7 @@ function renderMoments(intervals, overallIndex) {
   const moments = intenseMoments(intervals, overallIndex);
   const tile = $('#r-moments-tile');
   if (!moments.length) {
-    tile.querySelector('#r-moments').innerHTML = '<p class="tl-sub">Sin momentos destacables: intensidad estable.</p>';
+    tile.querySelector('#r-moments').innerHTML = '<p class="tl-sub">No notable moments: steady intensity.</p>';
     return;
   }
   $('#r-moments').innerHTML = moments.map((m) => `
@@ -463,7 +463,7 @@ function renderMetricCards(intervals) {
       if (bandIdx === -1) bandIdx = def.thresholds.length;
     }
     const isFlashWarn = key === 'flashes' && summary != null && summary > def.thresholds[2];
-    const pillLabel = isFlashWarn ? 'Aviso' : BAND_LABELS[bandIdx];
+    const pillLabel = isFlashWarn ? 'Warning' : BAND_LABELS[bandIdx];
 
     const sparkBars = values.slice(0, 16).map((v, i) => {
       const h = Math.max(4, Math.round((v / max) * 46));
@@ -472,7 +472,7 @@ function renderMetricCards(intervals) {
     }).join('');
 
     const display = summary == null ? '—'
-      : (key === 'picosVolumen' ? `+${String(summary).replace('.', ',')}` : String(summary).replace('.', ','));
+      : (key === 'volumePeaks' ? `+${String(summary)}` : String(summary));
 
     return `
       <div class="tile metric-card">
@@ -514,7 +514,7 @@ function renderDonut(intervals) {
     .map((b) => `
       <div class="dist-row">
         <span class="dist-left"><span class="dot" style="background:${BAND_VAR[b]}"></span>${BAND_LABELS[b]}</span>
-        <span class="dist-value">${counts[b]} ${counts[b] === 1 ? 'tramo' : 'tramos'} · ${Math.round((counts[b] / total) * 100)} %</span>
+        <span class="dist-value">${counts[b]} ${counts[b] === 1 ? 'segment' : 'segments'} · ${Math.round((counts[b] / total) * 100)}%</span>
       </div>`).join('');
 }
 
@@ -531,25 +531,25 @@ function downloadReport() {
     <tr><td>${formatTime(iv.start)}–${formatTime(iv.end)}</td><td>${BAND_LABELS[iv.rating.bandIndex]}</td>
     ${METRIC_KEYS.map((k) => `<td>${iv.metrics[k] ?? '—'}</td>`).join('')}</tr>`).join('');
 
-  const html = `<!DOCTYPE html><html lang="es"><head><meta charset="utf-8"><title>Informe EdadPlay — ${fileName}</title>
+  const html = `<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><title>Kiddometer Report — ${fileName}</title>
 <style>body{font-family:system-ui,sans-serif;max-width:860px;margin:2rem auto;padding:0 1rem;color:#1C1233}
 h1{color:#7B61FF}table{border-collapse:collapse;width:100%;font-size:13px}td,th{border:1px solid #ddd;padding:6px 8px;text-align:center}
 th{background:#F4F1FB}.badge{display:inline-block;background:${['#2FB67C', '#8BC34A', '#F5A524', '#F0426B'][overallIndex]};color:#fff;padding:6px 18px;border-radius:999px;font-size:22px;font-weight:700}</style></head><body>
-<h1>🎬 Informe EdadPlay</h1>
-<p><strong>${fileName}</strong> · duración ${formatTime(duration)} · analizado en ${formatTime(elapsed)} · 100 % local</p>
-<p>Edad recomendada: <span class="badge">${BAND_LABELS[overallIndex]}</span></p>
+<h1>🎬 Kiddometer Report</h1>
+<p><strong>${fileName}</strong> · duration ${formatTime(duration)} · analyzed in ${formatTime(elapsed)} · 100% local</p>
+<p>Recommended age: <span class="badge">${BAND_LABELS[overallIndex]}</span></p>
 <p>${verdictSummary(drivers, overallIndex)}</p>
 ${flashRange ? `<p style="color:#B22650"><strong>⚠ ${warningText(flashRange)}</strong></p>` : ''}
 <p><em>${advice(drivers, overallIndex, flashRange)}</em></p>
-<h2>Detalle por tramos</h2>
-<table><tr><th>Tramo</th><th>Edad</th>${METRIC_KEYS.map((k) => `<th>${METRICS[k].label}</th>`).join('')}</tr>${rows}</table>
-<p style="font-size:12px;color:#9A94AD">Herramienta orientativa: no sustituye el criterio de padres o profesionales. Metodología y referencias en la aplicación EdadPlay.</p>
+<h2>Per-segment detail</h2>
+<table><tr><th>Segment</th><th>Age</th>${METRIC_KEYS.map((k) => `<th>${METRICS[k].label}</th>`).join('')}</tr>${rows}</table>
+<p style="font-size:12px;color:#9A94AD">An orientation tool: it does not replace the judgement of parents or professionals. Methodology and references in the Kiddometer app.</p>
 </body></html>`;
 
   const blob = new Blob([html], { type: 'text/html' });
   const a = document.createElement('a');
   a.href = URL.createObjectURL(blob);
-  a.download = `edadplay-informe-${fileName.replace(/\.[^.]+$/, '')}.html`;
+  a.download = `kiddometer-report-${fileName.replace(/\.[^.]+$/, '')}.html`;
   a.click();
   URL.revokeObjectURL(a.href);
 }
@@ -561,7 +561,7 @@ function resetToHome() {
   $('#view-home').hidden = false;
   pendingFile = null;
   $('#file-input').value = '';
-  $('.drop-title').textContent = 'Arrastra un vídeo aquí o haz clic para seleccionar';
+  $('.drop-title').textContent = 'Drag a video here or click to select';
   window.scrollTo({ top: 0, behavior: 'smooth' });
 }
 
@@ -579,7 +579,7 @@ $('#file-input').addEventListener('change', () => {
   const file = $('#file-input').files[0];
   if (file) {
     pendingFile = file;
-    $('.drop-title').textContent = `Seleccionado: ${file.name}`;
+    $('.drop-title').textContent = `Selected: ${file.name}`;
   }
 });
 
@@ -596,7 +596,7 @@ $('#download-report').addEventListener('click', downloadReport);
 
 document.addEventListener('visibilitychange', () => {
   if (document.hidden && !$('#progress-wrap').hidden) {
-    $('#progress-label').textContent = 'Mantén esta pestaña visible: el navegador pausa el análisis en segundo plano.';
+    $('#progress-label').textContent = 'Keep this tab visible: the browser pauses analysis in the background.';
   }
 });
 

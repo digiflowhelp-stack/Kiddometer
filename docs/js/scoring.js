@@ -1,17 +1,17 @@
 // Age-rating model: metric thresholds per age band and aggregation rules.
 //
 // Evidence-based thresholds (see index.html#metodologia for citations):
-// - cortes/min: Lillard & Peterson (2011) measured pacing as cuts/min.
+// - cuts/min: Lillard & Peterson (2011) measured pacing as cuts/min.
 //   Caillou (~1.8 cuts/min) was harmless for preschoolers, SpongeBob
 //   (~5.5 cuts/min) impaired executive function in 4-year-olds.
 // - flashes/s: WCAG 2.3.1 / ITU-R BT.1702 set 3 flashes/s as the
 //   photosensitive-seizure safety limit at any age.
-// - picos de volumen: absolute SPL cannot be measured from a file, so we
+// - volume peaks: absolute SPL cannot be measured from a file, so we
 //   score sudden loudness jumps relative to the programme's own integrated
 //   loudness (ITU-R BT.1770 K-weighting, EBU R128 style).
 //
 // Heuristic thresholds (calibrated, flagged with evidence:false in the UI):
-// movimiento, complejidad, densidadSonora.
+// motion, complexity, soundDensity.
 
 export const BANDS = ['0-3', '4-6', '7-12', '13+'];
 
@@ -23,47 +23,47 @@ export const BAND_COLORS = {
 };
 
 export const METRICS = {
-  cortes: {
-    label: 'Cortes visuales',
-    unit: 'cortes/min',
+  cuts: {
+    label: 'Visual cuts',
+    unit: 'cuts/min',
     thresholds: [2, 4, 8],
     evidence: true,
-    description: 'Cambios de plano por minuto. El ritmo de edición rápido se asocia con peor función ejecutiva inmediata en preescolares.',
+    description: 'Shot changes per minute. A fast editing pace is associated with worse immediate executive function in preschoolers.',
   },
-  movimiento: {
-    label: 'Movimiento en pantalla',
-    unit: 'índice 0-100',
+  motion: {
+    label: 'On-screen motion',
+    unit: 'index 0-100',
     thresholds: [5, 10, 18],
     evidence: false,
-    description: 'Cantidad media de cambio entre fotogramas consecutivos dentro del mismo plano. Aproxima el dinamismo visual continuo.',
+    description: 'Mean amount of change between consecutive frames within the same shot. Approximates continuous visual dynamism.',
   },
-  complejidad: {
-    label: 'Complejidad visual',
-    unit: 'índice 0-100',
+  complexity: {
+    label: 'Visual complexity',
+    unit: 'index 0-100',
     thresholds: [8, 14, 22],
     evidence: false,
-    description: 'Densidad de bordes por fotograma (detalle y saturación de elementos en escena).',
+    description: 'Edge density per frame (detail and saturation of elements on screen).',
   },
   flashes: {
-    label: 'Destellos',
-    unit: 'flashes/s (máx)',
+    label: 'Flashes',
+    unit: 'flashes/s (max)',
     thresholds: [0.5, 1.5, 3],
     evidence: true,
-    description: 'Parpadeos de luminancia por segundo. Más de 3/s incumple WCAG 2.3.1 y supone riesgo fotosensible a cualquier edad.',
+    description: 'Luminance flickers per second. More than 3/s breaches WCAG 2.3.1 and poses a photosensitive risk at any age.',
   },
-  picosVolumen: {
-    label: 'Picos de volumen',
-    unit: 'dB sobre media',
+  volumePeaks: {
+    label: 'Volume peaks',
+    unit: 'dB over average',
     thresholds: [6, 9, 12],
     evidence: true,
-    description: 'Salto máximo de sonoridad a corto plazo respecto a la sonoridad media del vídeo (sustos, golpes de efecto).',
+    description: 'Maximum short-term loudness jump relative to the video\'s average loudness (jumpscares, sound stings).',
   },
-  densidadSonora: {
-    label: 'Densidad sonora',
-    unit: 'eventos/min',
+  soundDensity: {
+    label: 'Sound density',
+    unit: 'events/min',
     thresholds: [5, 10, 20],
     evidence: false,
-    description: 'Eventos sonoros salientes por minuto (apariciones bruscas de sonido por encima del nivel habitual del vídeo).',
+    description: 'Salient sound events per minute (abrupt appearances of sound above the video\'s usual level).',
   },
 };
 
@@ -108,16 +108,16 @@ export function overallRating(intervals) {
   const warnings = [];
   if (flashViolation) {
     warnings.push({
-      type: 'fotosensibilidad',
-      text: 'El vídeo supera los 3 destellos por segundo (WCAG 2.3.1). Riesgo de crisis fotosensibles a cualquier edad. No recomendado para personas con epilepsia fotosensible.',
+      type: 'photosensitivity',
+      text: 'The video exceeds 3 flashes per second (WCAG 2.3.1). Risk of photosensitive seizures at any age. Not recommended for people with photosensitive epilepsy.',
     });
   }
 
   const maxIdx = indices[indices.length - 1];
   if (maxIdx > p90) {
     warnings.push({
-      type: 'picos',
-      text: 'Algunos momentos puntuales del vídeo son más intensos que la clasificación global. Revisa la línea de tiempo.',
+      type: 'peaks',
+      text: 'Some specific moments of the video are more intense than the overall rating. Check the timeline.',
     });
   }
 

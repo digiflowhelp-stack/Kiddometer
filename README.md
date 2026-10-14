@@ -1,21 +1,23 @@
 <div align="center">
-  <img src=".github/screenshots/home.png" width="420" alt="EdadPlay home">
-  &nbsp;&nbsp;
-  <img src=".github/screenshots/results.png" width="420" alt="Analysis results">
-  <h1>🎬 EdadPlay</h1>
+  <img src="docs/assets/logo-wordmark.svg" width="420" alt="Kiddometer — is it right for your kid?">
+
   <p>Analyze any video in your browser and get a science-based age recommendation for children — 100% local, nothing is uploaded.</p>
+
   <p>
     <a href="LICENSE"><img src="https://img.shields.io/badge/license-MIT-blue?style=flat-square" alt="License"></a>
-    <a href="https://episuarez.github.io/edadPlay/"><img src="https://img.shields.io/badge/web-episuarez.github.io%2FedadPlay-7B61FF?style=flat-square" alt="Web"></a>
     <img src="https://img.shields.io/badge/platform-browser-0078d4?style=flat-square" alt="Platform">
     <img src="https://img.shields.io/badge/deps-zero-2FB67C?style=flat-square" alt="Zero dependencies">
-    <a href="https://huggingface.co/spaces/episuarez/edadplay-backend"><img src="https://img.shields.io/badge/backend-HF%20Space%20(optional)-FFD21E?style=flat-square" alt="Backend"></a>
+    <img src="https://img.shields.io/badge/backend-HF%20Space%20(optional)-FFD21E?style=flat-square" alt="Backend">
   </p>
+
+  <img src=".github/screenshots/home.png" width="420" alt="Kiddometer home">
+  &nbsp;&nbsp;
+  <img src=".github/screenshots/results.png" width="420" alt="Analysis results">
 </div>
 
 ## Try it
 
-Open **[episuarez.github.io/edadPlay](https://episuarez.github.io/edadPlay/)**, drop a video file (MP4, WebM, MOV) or paste a URL, and wait roughly ¼ of the video's duration. The video never leaves your device: decoding, audio analysis and scoring all run in the browser.
+Open the app, drop a video file (MP4, WebM, MOV) or paste a URL, and wait roughly ¼ of the video's duration. The video never leaves your device: decoding, audio analysis and scoring all run in the browser.
 
 ## What it measures
 
@@ -33,7 +35,7 @@ The video is split into 60-second segments; each segment gets the age its strict
 ## Features
 
 - **Basic / expert mode** — plain verdict for parents, full charts and metrics for the curious
-- **Data-driven explanations** — verdict summary, advice and tips are generated from the actual measurements, in plain Spanish
+- **Data-driven explanations** — verdict summary, advice and tips are generated from the actual measurements
 - **Per-minute timeline, intense moments, distribution donut and per-metric sparklines**
 - **Downloadable report** — self-contained HTML with the full per-segment table
 - **Three sources** — local file, direct video URL, or YouTube/Vimeo/TikTok/… via the optional backend
@@ -42,9 +44,10 @@ The video is split into 60-second segments; each segment gets the age its strict
 ## Project structure
 
 ```
-edadPlay
+Kiddometer
 ├── docs/                  # Static web app (GitHub Pages)
 │   ├── index.html
+│   ├── assets/            # Logo (SVG)
 │   ├── css/styles.css     # Design tokens from design/desgin.pen
 │   └── js/
 │       ├── main.js            # UI orchestration and rendering
@@ -80,4 +83,4 @@ See [CONTRIBUTING.md](CONTRIBUTING.md). Issues and PRs welcome — especially ca
 
 ## License
 
-[MIT](LICENSE) — EdadPlay is an orientation tool; it does not replace the judgement of parents or professionals.
+[MIT](LICENSE) — Kiddometer is an orientation tool; it does not replace the judgement of parents or professionals.

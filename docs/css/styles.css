@@ -63,6 +63,7 @@ a { color: inherit; text-decoration: none; }
   color: #fff;
 }
 .logo-mark svg { width: 20px; height: 20px; }
+.logo-mark img { width: 100%; height: 100%; border-radius: inherit; display: block; }
 .wordmark { font-family: var(--font-heading); font-size: 22px; font-weight: 700; }
 .nav-links { display: flex; gap: 32px; }
 .nav-links a { font-size: 14px; font-weight: 500; color: var(--text-secondary); }
@@ -387,6 +388,7 @@ a { color: inherit; text-decoration: none; }
 .footer-logo { display: flex; align-items: center; gap: 8px; font-family: var(--font-heading); font-weight: 700; font-size: 15px; }
 .footer-mark { width: 24px; height: 24px; background: var(--accent); border-radius: 8px; display: flex; align-items: center; justify-content: center; color: #fff; }
 .footer-mark svg { width: 14px; height: 14px; }
+.footer-mark img { width: 100%; height: 100%; border-radius: inherit; display: block; }
 .footer-text { color: var(--text-muted); margin: 0; }
 .footer-right { display: flex; align-items: center; gap: 16px; color: var(--text-secondary); font-weight: 500; }
 .footer-right svg { width: 16px; height: 16px; }
