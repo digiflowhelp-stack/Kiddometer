@@ -5,7 +5,7 @@
 ### 🛡️ The world's first 100% client-side, science-grounded engine that quantifies **sensory overload** in children's media.
 
 **Analyze any video in your browser and get a science-based age recommendation — without a single byte ever leaving your device.**
-
+ 
 <br>
 
 <!-- Hackathon badges -->
